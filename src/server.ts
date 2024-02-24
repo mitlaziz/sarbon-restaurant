@@ -1,7 +1,6 @@
-// Architectural pattern: MVC, Dependency Injection(DI), MVP
+import dotenv from 'dotenv';
+dotenv.config();
 
-// MVC = MODEL VIEW CONTROLLER (backend)
+console.log("PORT:", process.env.PORT);
 
-
-
-// Design pattern: Middleware, Decotar
+console.log("MONGO_URL:", process.env.MONGO_URL);
