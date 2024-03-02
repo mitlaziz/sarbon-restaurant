@@ -8,6 +8,13 @@
    - Error handling    
 */
 
+/* 
+Traditional API
+Rest API
+GraphQL API
+....
+*/
+
 
 // //Task H
 // function getPositive(arr: number[]) {
