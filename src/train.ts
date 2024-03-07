@@ -1,3 +1,23 @@
+// Task I
+function getDigits(input: string): string {
+    // Regex pattern to match digits
+    const regex = /\d/g;
+    
+    // Extract digits from the input string
+    const digitsArray = input.match(regex);
+    
+    // Join the extracted digits into a new string
+    if (digitsArray) {
+        return digitsArray.join("");
+    } else {
+        return ""; // No digits found in the input string
+    }
+}
+
+// Test the function
+console.log(getDigits("m14i1t")); // Output: "141"
+
+
 /* Project Standards:
    - Logging standards
    - Naming standards
