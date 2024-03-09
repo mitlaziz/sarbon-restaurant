@@ -49,7 +49,7 @@ class MemberService {
         const exist = await this.memberModel
         .findOne({memberType: MemberType.RESTAURANT })
         .exec();
-        //if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
+        if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
 
         //console.log("before:", input.memberPassword);
         const salt = await bcrypt.genSalt();
