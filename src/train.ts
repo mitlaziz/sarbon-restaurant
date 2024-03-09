@@ -1,21 +1,31 @@
-// Task I
-function getDigits(input: string): string {
-    // Regex pattern to match digits
-    const regex = /\d/g;
-    
-    // Extract digits from the input string
-    const digitsArray = input.match(regex);
-    
-    // Join the extracted digits into a new string
-    if (digitsArray) {
-        return digitsArray.join("");
-    } else {
-        return ""; // No digits found in the input string
-    }
-}
+//MIT Task I 
+function findLongestWord(str: any) {
+    // Split the string into array
+    let strSplit = str.split(" ");
+    // Return the first sorted item of the Array
+    return strSplit.sort((a: any, b: any) => b.length - a.length)[0];
+  }
+  const result = findLongestWord("I come from Uzbekistan");
+  console.log("result:", result);
 
-// Test the function
-console.log(getDigits("m14i1t")); // Output: "141"
+// Task I
+// function getDigits(input: string): string {
+//     // Regex pattern to match digits
+//     const regex = /\d/g;
+    
+//     // Extract digits from the input string
+//     const digitsArray = input.match(regex);
+    
+//     // Join the extracted digits into a new string
+//     if (digitsArray) {
+//         return digitsArray.join("");
+//     } else {
+//         return ""; // No digits found in the input string
+//     }
+// }
+
+// // Test the function
+// console.log(getDigits("m14i1t")); // Output: "141"
 
 
 /* Project Standards:
