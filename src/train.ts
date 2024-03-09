@@ -35,6 +35,15 @@ GraphQL API
 ....
 */
 
+/**
+ Traditional fronted development => BSSR => EJS
+ tdf ni bssr deb ham ataymiz. frontend req yuboradi req handle qilib respond yuboradi. uni ejs framworkby did
+ 
+ Modern fronted development => SPA (user's sppliation)=> REACT
+ front backend dan faqat json data qabul qb, htmlni ozi hosil qiladi. react librirary by did
+
+ */
+
 
 // //Task H
 // function getPositive(arr: number[]) {
