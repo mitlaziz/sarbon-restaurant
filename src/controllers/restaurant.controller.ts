@@ -10,7 +10,7 @@ const restaurantController: T = {};
 restaurantController.goHome = (req: Request, res: Response) => {
     try {
       console.log("goHome");  //loyiha standarti.mantiq yetib kelganini for check 
-      res.send("Home Page");  //send | json | redirect | end | render -response turlari 
+      res.render("home");  //send | json | redirect | end | render -response turlari 
     } catch (err) {
        console.log("Error, goHome;", err);
     }   
@@ -18,7 +18,7 @@ restaurantController.goHome = (req: Request, res: Response) => {
 restaurantController.getSignup = (req: Request, res: Response) => {
   try {
     console.log("getSignup");  //loyiha standarti. 
-    res.send("Signup Page");
+    res.render("signup"); 
   } catch (err) {
      console.log("Error, getSignup;", err);
   }   
@@ -27,7 +27,7 @@ restaurantController.getSignup = (req: Request, res: Response) => {
 restaurantController.getLogin = (req: Request, res: Response) => {
     try {
       console.log("getLogin");  //loyiha standarti. 
-      res.send("Login Page");
+      res.render("login"); 
     } catch (err) {
        console.log("Error, getLogin;", err);
     }   
