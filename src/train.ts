@@ -54,6 +54,11 @@ GraphQL API
 
  */
 
+ /**
+  request join
+  self destroy
+  */
+
 
 // //Task H
 // function getPositive(arr: number[]) {
