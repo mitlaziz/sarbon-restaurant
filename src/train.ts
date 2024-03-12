@@ -1,12 +1,30 @@
-//MIT Task I 
-function findLongestWord(str: any) {
-    // Split the string into array
-    let strSplit = str.split(" ");
-    // Return the first sorted item of the Array
-    return strSplit.sort((a: any, b: any) => b.length - a.length)[0];
+//Mit task K
+function unliHarflarSoni(text:string): number {
+  const unliHarflar = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+  let unliHarflarSoni = 0;
+
+  for(let i = 0; i < text.length; i++) {
+    if(unliHarflar.includes(text[i])) {
+      unliHarflarSoni++;
+    }
   }
-  const result = findLongestWord("I come from Uzbekistan");
-  console.log("result:", result);
+  return unliHarflarSoni;
+}
+
+const text = "Alhamdulillah for everything";
+console.log('unliHarflarSoni:', unliHarflarSoni(text));
+
+
+
+// //MIT Task I 
+// function findLongestWord(str: any) {
+//     // Split the string into array
+//     let strSplit = str.split(" ");
+//     // Return the first sorted item of the Array
+//     return strSplit.sort((a: any, b: any) => b.length - a.length)[0];
+//   }
+//   const result = findLongestWord("I come from Uzbekistan");
+//   console.log("result:", result);
 
 // Task I
 // function getDigits(input: string): string {
