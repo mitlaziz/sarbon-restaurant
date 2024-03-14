@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 import Errors from "../libs/Errors";
 import { T } from "../libs/types/common";
-import ProductService from "../models/product.service";
+import ProductService from "../models/Product.service";
 
 const productService = new ProductService();
 
@@ -20,7 +20,7 @@ productController.getAllProducts = async (req: Request, res: Response) => {
   productController.createNewProdeuct = async (req: Request, res: Response) => {
     try {
       console.log("createNewProdeuct"); 
-
+      res.send("DONE!");
     } catch (err) {
        console.log("Error, createNewProdeuct;", err);
        if(err instanceof Errors ) res.status(err.code).json(err);
