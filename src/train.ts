@@ -1,18 +1,44 @@
-//Mit task K
-function unliHarflarSoni(text:string): number {
-  const unliHarflar = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
-  let unliHarflarSoni = 0;
-
-  for(let i = 0; i < text.length; i++) {
-    if(unliHarflar.includes(text[i])) {
-      unliHarflarSoni++;
-    }
+// Mit Task L
+function reverseSentence(sentence: string): string {
+  // Bo'sh stringni qaytarish
+  if (!sentence) {
+      return "";
   }
-  return unliHarflarSoni;
+
+  // Berilgan stringni bo'lish
+  const words = sentence.split(" ");
+
+  // So'zlarni teskarisiga yozish va yangi stringga qo'shish
+  const reversedWords = words.map(word => {
+      // Har bir so'zni teskarisiga yozish
+      const reversedWord = word.split("").reverse().join("");
+      return reversedWord;
+  });
+
+  // Yangi stringni qaytarish
+  return reversedWords.join(" ");
 }
 
-const text = "Alhamdulillah for everything";
-console.log('unliHarflarSoni:', unliHarflarSoni(text));
+// Funksiyani sinovdan o'tkazish
+const result = reverseSentence("I am the best Software engineer!");
+console.log(result); // Natija: ew ekil gnidoc
+
+
+// //Mit task K
+// function unliHarflarSoni(text:string): number {
+//   const unliHarflar = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+//   let unliHarflarSoni = 0;
+
+//   for(let i = 0; i < text.length; i++) {
+//     if(unliHarflar.includes(text[i])) {
+//       unliHarflarSoni++;
+//     }
+//   }
+//   return unliHarflarSoni;
+// }
+
+// const text = "Alhamdulillah for everything";
+// console.log('unliHarflarSoni:', unliHarflarSoni(text));
 
 
 
@@ -56,14 +82,14 @@ console.log('unliHarflarSoni:', unliHarflarSoni(text));
    - Error handling    
 */
 
-/* 
+/*  Request:
 Traditional API
 Rest API
 GraphQL API
 ....
 */
 
-/**
+/** Fontend Developmant
  Traditional fronted development => BSSR => EJS
  tdf ni bssr deb ham ataymiz. frontend req yuboradi req handle qilib respond yuboradi. uni ejs framworkby did
  
@@ -72,11 +98,17 @@ GraphQL API
 
  */
 
- /**
+ /** Cookies
   request join
   self destroy
   */
 
+  /** VValidation:
+   Frontend validation
+   Pipe validaton- lekin Burakda iwlatmaymiz
+   Backend validation
+   Database validation 
+   */
 
 // //Task H
 // function getPositive(arr: number[]) {
