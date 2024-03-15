@@ -1,27 +1,45 @@
-// Mit Task L
-function reverseSentence(sentence: string): string {
-  // Bo'sh stringni qaytarish
-  if (!sentence) {
-      return "";
-  }
+// Mit Task M
+function getSquareNumbers(numbers: number[]): { number: number; square: number }[] {
+    // Berilgan raqamlar uchun kvadrat objectlarini hosil qilish
+    const squareObjects = numbers.map(num => {
+        return {
+            number: num,
+            square: num * num
+        };
+    });
 
-  // Berilgan stringni bo'lish
-  const words = sentence.split(" ");
-
-  // So'zlarni teskarisiga yozish va yangi stringga qo'shish
-  const reversedWords = words.map(word => {
-      // Har bir so'zni teskarisiga yozish
-      const reversedWord = word.split("").reverse().join("");
-      return reversedWord;
-  });
-
-  // Yangi stringni qaytarish
-  return reversedWords.join(" ");
+    return squareObjects;
 }
 
-// Funksiyani sinovdan o'tkazish
-const result = reverseSentence("I am the best Software engineer!");
-console.log(result); // Natija: ew ekil gnidoc
+// Funksiyani sinovdan o'tkazamiz
+const result = getSquareNumbers([1, 2, 3]);
+console.log(result); // Natija: [{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9}]
+
+
+// // Mit Task L
+// function reverseSentence(sentence: string): string {
+//   // Bo'sh stringni qaytarish
+//   if (!sentence) {
+//       return "";
+//   }
+
+//   // Berilgan stringni bo'lish
+//   const words = sentence.split(" ");
+
+//   // So'zlarni teskarisiga yozish va yangi stringga qo'shish
+//   const reversedWords = words.map(word => {
+//       // Har bir so'zni teskarisiga yozish
+//       const reversedWord = word.split("").reverse().join("");
+//       return reversedWord;
+//   });
+
+//   // Yangi stringni qaytarish
+//   return reversedWords.join(" ");
+// }
+
+// // Funksiyani sinovdan o'tkazish
+// const result = reverseSentence("I am the best Software engineer!");
+// console.log(result); // Natija: ew ekil gnidoc
 
 
 // //Mit task K
