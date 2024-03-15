@@ -13,7 +13,7 @@ export interface Product {
     productLeftCount: number;
     productSize: ProductSize;
     productVolume: number;
-    productDessc?: string;
+    productDesc?: string;
     productImages: string[];
     productViews: number;
 }
@@ -27,7 +27,7 @@ export interface ProductInput {
     productLeftCount: number;
     productSize?: ProductSize;
     productVolume?: number;
-    productDessc?: string;
+    productDesc?: string;
     productImages?: string[];
     productViews?: number;
 }
