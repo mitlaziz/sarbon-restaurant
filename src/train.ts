@@ -1,19 +1,55 @@
-// Mit Task M
-function getSquareNumbers(numbers: number[]): { number: number; square: number }[] {
-    // Berilgan raqamlar uchun kvadrat objectlarini hosil qilish
-    const squareObjects = numbers.map(num => {
-        return {
-            number: num,
-            square: num * num
-        };
-    });
+// Mit Task N
+function isPalindrome(word: string): boolean {
+    // Berilgan sozni to'g'ri bo'lib bo'lmagan halatida kichik harflarga o'tkazamiz va simvollarni tozalaymiz
+    const cleanedWord = word.toLowerCase().replace(/[\W_]/g, '');
 
-    return squareObjects;
+    // So'zning uzunligini hisoblaymiz
+    const length = cleanedWord.length;
+
+    // So'zni boshidan va oxiridan boshlab tekshirish uchun indekslar
+    let start = 0;
+    let end = length - 1;
+
+    // To'g'ri oqilgan so'zni tekshiramiz
+    while (start < end) {
+        if (cleanedWord[start] !== cleanedWord[end]) {
+            return false; // Agar bitta xilmasligi aniqlansa, false qaytaramiz
+        }
+        // Bir-biriga yaqinlashib ketamiz
+        start++;
+        end--;
+    }
+    return true; // Agar so'z palindrom bo'lsa, true qaytaramiz
 }
 
-// Funksiyani sinovdan o'tkazamiz
-const result = getSquareNumbers([1, 2, 3]);
-console.log(result); // Natija: [{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9}]
+// Test qilish
+console.log(isPalindrome("Anna")); // true
+console.log(isPalindrome("level")); // true
+console.log(isPalindrome("hello")); // false
+console.log(isPalindrome("A man a plan a canal Panama")); // true
+
+//Bu funksiya berilgan sozning palindrom bo'lib bo'lmagligini tekshiradi. 
+//Kichik harflarga o'tkazish va simvollarni olib tashlash qo'shimcha qadam bo'lib,
+ //bu funksiya berilgan sozni to'g'ri o'qilganda ham, orqasidan o'qilganda ham 
+ //bir hil oqiladi yoki yo'qmi, shuni tekshiradi.
+ 
+
+// // Mit Task M
+// function getSquareNumbers(numbers: number[]): { number: number; square: number }[] {
+//     // Berilgan raqamlar uchun kvadrat objectlarini hosil qilish
+//     const squareObjects = numbers.map(num => {
+//         return {
+//             number: num,
+//             square: num * num
+//         };
+//     });
+
+//     return squareObjects;
+// }
+
+// // Funksiyani sinovdan o'tkazamiz
+// const result = getSquareNumbers([1, 2, 3]);
+// console.log(result); // Natija: [{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9}]
 
 
 // // Mit Task L
