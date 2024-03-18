@@ -79,7 +79,7 @@ restaurantController.processLogin = async (
     const result = await memberService.processlogin(input);
     //TODO: SESSIONS ATHENTICATION
 
-    req.session.member = result;
+    req.session.member = result; 
     req.session.save(function() {
       res.send(result);
     });
@@ -105,10 +105,31 @@ restaurantController.logout = async (
     } );
   } catch (err) {
      console.log("Error, logout:", err);
-     res.redirect("/admin");
+     res.redirect("/admin/login");
   }   
 };
 
+
+restaurantController.getUsers = async (req: Request, res: Response) => {
+  try {
+    console.log("getUsers");
+    const result = await memberService.getUsers();
+    
+    res.render("users", {users: result});
+  } catch (err) {
+     console.log("Error, getUsers;", err);
+     res.redirect("/admin");  
+  }   
+};
+
+
+restaurantController.updateChosenUser = (req: Request, res: Response) => {
+  try {
+    console.log("updateChosenUser");  
+  } catch (err) {
+     console.log("Error, updateChosenUser;", err);
+  }   
+};
 
 restaurantController.checkAuthSession = async (
   req: AdminRequest, 
