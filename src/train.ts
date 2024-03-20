@@ -1,37 +1,63 @@
-// Mit Task N
-function isPalindrome(word: string): boolean {
-    // Berilgan sozni to'g'ri bo'lib bo'lmagan halatida kichik harflarga o'tkazamiz va simvollarni tozalaymiz
-    const cleanedWord = word.toLowerCase().replace(/[\W_]/g, '');
-
-    // So'zning uzunligini hisoblaymiz
-    const length = cleanedWord.length;
-
-    // So'zni boshidan va oxiridan boshlab tekshirish uchun indekslar
-    let start = 0;
-    let end = length - 1;
-
-    // To'g'ri oqilgan so'zni tekshiramiz
-    while (start < end) {
-        if (cleanedWord[start] !== cleanedWord[end]) {
-            return false; // Agar bitta xilmasligi aniqlansa, false qaytaramiz
+//Mit Task O
+//Quyidagi TypeScript funksiyasi, har xil valuelardan iborat array qabul qilib, 
+//faqat sonlarni hisoblab chiqadi va ularni yig'indisini qaytaradi:
+function calculateSumOfNumbers(array: any[]): number {
+    let sum: number = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (typeof array[i] === 'number') {
+            sum += array[i];
+        } else if (typeof array[i] === 'string' && !isNaN(parseInt(array[i]))) {
+            sum += parseInt(array[i]);
         }
-        // Bir-biriga yaqinlashib ketamiz
-        start++;
-        end--;
     }
-    return true; // Agar so'z palindrom bo'lsa, true qaytaramiz
+    return sum;
 }
 
-// Test qilish
-console.log(isPalindrome("Anna")); // true
-console.log(isPalindrome("level")); // true
-console.log(isPalindrome("hello")); // false
-console.log(isPalindrome("A man a plan a canal Panama")); // true
+// Funksiyani sinov uchun
+console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35])); // Natija: 45
 
-//Bu funksiya berilgan sozning palindrom bo'lib bo'lmagligini tekshiradi. 
-//Kichik harflarga o'tkazish va simvollarni olib tashlash qo'shimcha qadam bo'lib,
- //bu funksiya berilgan sozni to'g'ri o'qilganda ham, orqasidan o'qilganda ham 
- //bir hil oqiladi yoki yo'qmi, shuni tekshiradi.
+//Bu kod faqat sonlarni hisoblash uchun typeof operatorini va isNaN() funksiyasini ishlatadi. 
+//Bu, son emas bo'lgan qiymatlarni hisobga olmaydi. Sizning masalangizda, 
+//son emas bo'lgan qiymatlar hisobga olinmaydi, shuningdek, 
+//"10" qiymati son sifatida hisoblanadi. Natijada, 45 qaytariladi.
+
+
+
+
+// // Mit Task N
+// function isPalindrome(word: string): boolean {
+//     // Berilgan sozni to'g'ri bo'lib bo'lmagan halatida kichik harflarga o'tkazamiz va simvollarni tozalaymiz
+//     const cleanedWord = word.toLowerCase().replace(/[\W_]/g, '');
+
+//     // So'zning uzunligini hisoblaymiz
+//     const length = cleanedWord.length;
+
+//     // So'zni boshidan va oxiridan boshlab tekshirish uchun indekslar
+//     let start = 0;
+//     let end = length - 1;
+
+//     // To'g'ri oqilgan so'zni tekshiramiz
+//     while (start < end) {
+//         if (cleanedWord[start] !== cleanedWord[end]) {
+//             return false; // Agar bitta xilmasligi aniqlansa, false qaytaramiz
+//         }
+//         // Bir-biriga yaqinlashib ketamiz
+//         start++;
+//         end--;
+//     }
+//     return true; // Agar so'z palindrom bo'lsa, true qaytaramiz
+// }
+
+// // Test qilish
+// console.log(isPalindrome("Anna")); // true
+// console.log(isPalindrome("level")); // true
+// console.log(isPalindrome("hello")); // false
+// console.log(isPalindrome("A man a plan a canal Panama")); // true
+
+// //Bu funksiya berilgan sozning palindrom bo'lib bo'lmagligini tekshiradi. 
+// //Kichik harflarga o'tkazish va simvollarni olib tashlash qo'shimcha qadam bo'lib,
+//  //bu funksiya berilgan sozni to'g'ri o'qilganda ham, orqasidan o'qilganda ham 
+//  //bir hil oqiladi yoki yo'qmi, shuni tekshiradi.
  
 
 // // Mit Task M
