@@ -14,7 +14,7 @@ export enum ProductVolume {
 }
 
 export enum ProductStatus {
-    PAUSE = " PAUSE",
+    PAUSE = "PAUSE",
     PROCESS = "PROCESS",
     DELETE = "DELETE",
 }
