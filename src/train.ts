@@ -1,28 +1,54 @@
-//Mit Task O
-//Quyidagi TypeScript funksiyasi, har xil valuelardan iborat array qabul qilib, 
-//faqat sonlarni hisoblab chiqadi va ularni yig'indisini qaytaradi:
-function calculateSumOfNumbers(array: any[]): number {
-    let sum: number = 0;
-    for (let i = 0; i < array.length; i++) {
-        if (typeof array[i] === 'number') {
-            sum += array[i];
-        } else if (typeof array[i] === 'string' && !isNaN(parseInt(array[i]))) {
-            sum += parseInt(array[i]);
-        }
-    }
-    return sum;
+//MIT Task P
+//TypeScriptda Shunday function yozing, u object qabul qilsin va arrayni object arrayga otkazib arrayni qaytarsin qaytarsin.
+//MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
+
+function objectToArray(obj: { [key: string]: any }): [string, any][] {
+    return Object.entries(obj);
 }
+// Test
+const result = objectToArray({ a: 10, b: 20 });
+console.log(result);  // Narx bo'yicha massiv: [['a', 10], ['b', 20]]
+// Bu funktsiya berilgan obyektni iteratsiya qiladi va har bir xususiyat va 
+// uning qiymatini bir qatorning elementi sifatida qaytaradi. 
+// Object.entries funktsiyasi bu maqsadga mos keladi.
+// Test qismida kodni sinash uchun:
 
-// Funksiyani sinov uchun
-console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35])); // Natija: 45
+//2 chi usu;
+function objectToArray2(obj: Record<string, any>): Array<[string, any]> {
+    return Object.entries(obj);
+}
+// Test
+const result2 = objectToArray({ a: 10, b: 20 });
+console.log(result); // Narx bo'yicha massiv: [['a', 10], ['b', 20]]
 
-//Bu kod faqat sonlarni hisoblash uchun typeof operatorini va isNaN() funksiyasini ishlatadi. 
-//Bu, son emas bo'lgan qiymatlarni hisobga olmaydi. Sizning masalangizda, 
-//son emas bo'lgan qiymatlar hisobga olinmaydi, shuningdek, 
-//"10" qiymati son sifatida hisoblanadi. Natijada, 45 qaytariladi.
 
 
+//=======================================//
+// //Mit Task O
+// //Quyidagi TypeScript funksiyasi, har xil valuelardan iborat array qabul qilib, 
+// //faqat sonlarni hisoblab chiqadi va ularni yig'indisini qaytaradi:
+// function calculateSumOfNumbers(array: any[]): number {
+//     let sum: number = 0;
+//     for (let i = 0; i < array.length; i++) {
+//         if (typeof array[i] === 'number') {
+//             sum += array[i];
+//         } else if (typeof array[i] === 'string' && !isNaN(parseInt(array[i]))) {
+//             sum += parseInt(array[i]);
+//         }
+//     }
+//     return sum;
+// }
 
+// // Funksiyani sinov uchun
+// console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35])); // Natija: 45
+
+// //Bu kod faqat sonlarni hisoblash uchun typeof operatorini va isNaN() funksiyasini ishlatadi. 
+// //Bu, son emas bo'lgan qiymatlarni hisobga olmaydi. Sizning masalangizda, 
+// //son emas bo'lgan qiymatlar hisobga olinmaydi, shuningdek, 
+// //"10" qiymati son sifatida hisoblanadi. Natijada, 45 qaytariladi.
+
+
+//==================//
 
 // // Mit Task N
 // function isPalindrome(word: string): boolean {
@@ -59,7 +85,7 @@ console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35])); // Natija: 
 //  //bu funksiya berilgan sozni to'g'ri o'qilganda ham, orqasidan o'qilganda ham 
 //  //bir hil oqiladi yoki yo'qmi, shuni tekshiradi.
  
-
+//=============//
 // // Mit Task M
 // function getSquareNumbers(numbers: number[]): { number: number; square: number }[] {
 //     // Berilgan raqamlar uchun kvadrat objectlarini hosil qilish
@@ -77,7 +103,7 @@ console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35])); // Natija: 
 // const result = getSquareNumbers([1, 2, 3]);
 // console.log(result); // Natija: [{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9}]
 
-
+//=============//
 // // Mit Task L
 // function reverseSentence(sentence: string): string {
 //   // Bo'sh stringni qaytarish
