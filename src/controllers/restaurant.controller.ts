@@ -81,7 +81,7 @@ restaurantController.processLogin = async (
 
     req.session.member = result; 
     req.session.save(function() {
-      res.send(result);
+      res.redirect("/admin/product/all");
     });
 
   } catch (err) {
