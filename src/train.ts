@@ -1,25 +1,55 @@
-//MIT Task P
-//TypeScriptda Shunday function yozing, u object qabul qilsin va arrayni object arrayga otkazib arrayni qaytarsin qaytarsin.
-//MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
-
-function objectToArray(obj: { [key: string]: any }): [string, any][] {
-    return Object.entries(obj);
+// MITASK Q
+/**TypeScriptda Shunday function yozing, u 2 ta parametrgga ega bolib 
+ * birinchisi object, ikkinchisi string. 
+ * Agar string parametri objectning propertysi bolsa true, 
+ * propertysi bolmasa false qaytarsin.
+MASALAN: hasProperty({name: "BMW", model: "M3"}, "model") return true; 
+hasProperty({name: "BMW", model: "M3"}, "year") return false */
+function hasProperty(obj: object, propName: string): boolean {
+    return obj.hasOwnProperty(propName);
 }
-// Test
-const result = objectToArray({ a: 10, b: 20 });
-console.log(result);  // Narx bo'yicha massiv: [['a', 10], ['b', 20]]
-// Bu funktsiya berilgan obyektni iteratsiya qiladi va har bir xususiyat va 
-// uning qiymatini bir qatorning elementi sifatida qaytaradi. 
-// Object.entries funktsiyasi bu maqsadga mos keladi.
-// Test qismida kodni sinash uchun:
 
-//2 chi usu;
-function objectToArray2(obj: Record<string, any>): Array<[string, any]> {
-    return Object.entries(obj);
+// Test qilamiz 
+console.log(hasProperty({name: "BMW", model: "M3"}, "model")); // true
+console.log(hasProperty({name: "BMW", model: "M3"}, "year")); // false
+
+
+//=========================//
+
+function checkPropertyExists(obj: any, propName: string): boolean {
+    return propName in obj;
 }
-// Test
-const result2 = objectToArray({ a: 10, b: 20 });
-console.log(result); // Narx bo'yicha massiv: [['a', 10], ['b', 20]]
+
+// Test qilish
+const myObject = { name: "BMW", year: 2024 };
+console.log(checkPropertyExists(myObject, "name"));  // true
+console.log(checkPropertyExists(myObject, "address"));  // false
+//
+
+
+//=======================================//
+// //MIT Task P
+// //TypeScriptda Shunday function yozing, u object qabul qilsin va arrayni object arrayga otkazib arrayni qaytarsin qaytarsin.
+// //MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
+
+// function objectToArray(obj: { [key: string]: any }): [string, any][] {
+//     return Object.entries(obj);
+// }
+// // Test
+// const result = objectToArray({ a: 10, b: 20 });
+// console.log(result);  // Narx bo'yicha massiv: [['a', 10], ['b', 20]]
+// // Bu funktsiya berilgan obyektni iteratsiya qiladi va har bir xususiyat va 
+// // uning qiymatini bir qatorning elementi sifatida qaytaradi. 
+// // Object.entries funktsiyasi bu maqsadga mos keladi.
+// // Test qismida kodni sinash uchun:
+
+// //2 chi usu;
+// function objectToArray2(obj: Record<string, any>): Array<[string, any]> {
+//     return Object.entries(obj);
+// }
+// // Test
+// const result2 = objectToArray({ a: 10, b: 20 });
+// console.log(result); // Narx bo'yicha massiv: [['a', 10], ['b', 20]]
 
 
 
