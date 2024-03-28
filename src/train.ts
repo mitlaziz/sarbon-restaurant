@@ -1,30 +1,86 @@
-// MITASK Q
-/**TypeScriptda Shunday function yozing, u 2 ta parametrgga ega bolib 
- * birinchisi object, ikkinchisi string. 
- * Agar string parametri objectning propertysi bolsa true, 
- * propertysi bolmasa false qaytarsin.
-MASALAN: hasProperty({name: "BMW", model: "M3"}, "model") return true; 
-hasProperty({name: "BMW", model: "M3"}, "year") return false */
-function hasProperty(obj: object, propName: string): boolean {
-    return obj.hasOwnProperty(propName);
+// MITASK R
+function evaluateStringExpression(expression: string): number {
+    // If the expression is empty, return 0
+    if (!expression) return 0;
+
+    // Evaluate the expression using the built-in eval() function
+    const result = eval(expression);
+
+    // Check if the result is a number
+    if (typeof result === 'number') {
+        return result;
+    } else {
+        // If the result is not a number, return NaN (Not a Number)
+        return NaN;
+    }
 }
 
-// Test qilamiz 
-console.log(hasProperty({name: "BMW", model: "M3"}, "model")); // true
-console.log(hasProperty({name: "BMW", model: "M3"}, "year")); // false
+// Test the function with an example expression
+const expressionResult = evaluateStringExpression("1+2");
+console.log(expressionResult); // natija: 3
 
+/**Bu funksiya berilgan ifoda orqali matnni tekshirib, 
+ * uni JavaScriptning eval() funksiyasi yordamida hisoblaydi. 
+ * Agar natija raqam bo'lsa, u son holatida qaytariladi. 
+ * Aks holda, NaN (Son emas) qaytariladi. */
 
-//=========================//
+//==2 usul==/
+function calculate(expression: string): number {
+    // If the expression is empty, return 0
+    if (!expression) return 0;
 
-function checkPropertyExists(obj: any, propName: string): boolean {
-    return propName in obj;
+    // Qatorning ikkita qismiga bo'lib ajratib olish
+    const parts = expression.split('+');
+
+    // Qismning birinchi va ikkinchi sonlarini hisoblash
+    const firstNumber = parseInt(parts[0]);
+    const secondNumber = parseInt(parts[1]);
+
+    // Sonlarni qo'shib natijani qaytarish
+    return firstNumber + secondNumber;
 }
 
-// Test qilish
-const myObject = { name: "BMW", year: 2024 };
-console.log(checkPropertyExists(myObject, "name"));  // true
-console.log(checkPropertyExists(myObject, "address"));  // false
-//
+// Test the function with an example expression
+const result = calculate("1+3");
+console.log(result); // natija: 4
+
+/**Bu funksiya matnni qo'shish belgisi (+) orqali ikkita qismga bo'lib ajratib, 
+ * ularni sonlarga o'giradi va ularni qo'shib, natijani qaytaradi. 
+ * Agar matnda + belgisi bo'lmagan bo'lsa, funksiya 0 ni qaytaradi. */
+
+
+
+//====================================//
+
+
+
+// // MITASK Q
+// /**TypeScriptda Shunday function yozing, u 2 ta parametrgga ega bolib 
+//  * birinchisi object, ikkinchisi string. 
+//  * Agar string parametri objectning propertysi bolsa true, 
+//  * propertysi bolmasa false qaytarsin.
+// MASALAN: hasProperty({name: "BMW", model: "M3"}, "model") return true; 
+// hasProperty({name: "BMW", model: "M3"}, "year") return false */
+// function hasProperty(obj: object, propName: string): boolean {
+//     return obj.hasOwnProperty(propName);
+// }
+
+// // Test qilamiz 
+// console.log(hasProperty({name: "BMW", model: "M3"}, "model")); // true
+// console.log(hasProperty({name: "BMW", model: "M3"}, "year")); // false
+
+
+// //=========================//
+
+// function checkPropertyExists(obj: any, propName: string): boolean {
+//     return propName in obj;
+// }
+
+// // Test qilish
+// const myObject = { name: "BMW", year: 2024 };
+// console.log(checkPropertyExists(myObject, "name"));  // true
+// console.log(checkPropertyExists(myObject, "address"));  // false
+// //
 
 
 //=======================================//
