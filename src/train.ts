@@ -1,52 +1,85 @@
-// MITASK R
-function evaluateStringExpression(expression: string): number {
-    // If the expression is empty, return 0
-    if (!expression) return 0;
+// MITASK S 
+function missingNumber(nums: number[]): number {
+    const n = nums.length;
+    let totalSum = (n * (n + 1)) / 2;
+    let sum = 0;
 
-    // Evaluate the expression using the built-in eval() function
-    const result = eval(expression);
-
-    // Check if the result is a number
-    if (typeof result === 'number') {
-        return result;
-    } else {
-        // If the result is not a number, return NaN (Not a Number)
-        return NaN;
+    for (let i = 0; i < n; i++) {
+        sum += nums[i];
     }
+
+    return totalSum - sum;
 }
 
-// Test the function with an example expression
-const expressionResult = evaluateStringExpression("1+2");
-console.log(expressionResult); // natija: 3
+// Test
+console.log(missingNumber([3, 0, 1])); // Konsolga 2 chiqadi
 
-/**Bu funksiya berilgan ifoda orqali matnni tekshirib, 
- * uni JavaScriptning eval() funksiyasi yordamida hisoblaydi. 
- * Agar natija raqam bo'lsa, u son holatida qaytariladi. 
- * Aks holda, NaN (Son emas) qaytariladi. */
+/**Quyidagi TypeScript funktsiyasi berilgan sonlardan tashkil topgan massivni qabul qilib, 
+ * massivdagi o'rinboshsiz sonni topib uni qaytaradi:
 
-//==2 usul==/
-function calculate(expression: string): number {
-    // If the expression is empty, return 0
-    if (!expression) return 0;
+Ushbu funktsiya quyidagi tartibda ishlaydi:
 
-    // Qatorning ikkita qismiga bo'lib ajratib olish
-    const parts = expression.split('+');
+1. `n` o'zgaruvchisiga massiv uzunligi olinadi.
+2. `totalSum` o'zgaruvchisiga 0 dan n gacha bo'lgan butun sonlar yig'indisini topish formulasi orqali hisoblanadi.
+3. `sum` o'zgaruvchisiga massivdagi barcha elementlar yig'indisi hisoblanadi.
+4. `totalSum` va `sum` ni ayirmoq orqali o'rinboshsiz son topiladi va uni qaytaradi.
 
-    // Qismning birinchi va ikkinchi sonlarini hisoblash
-    const firstNumber = parseInt(parts[0]);
-    const secondNumber = parseInt(parts[1]);
+Yuqoridagi misolda `missingNumber([3, 0, 1])` ni chaqirganimizda konsolga 2 chiqadi, 
+chunki 0, 1, va 3 sonlari orasida 2 tushib qolgan son. */
 
-    // Sonlarni qo'shib natijani qaytarish
-    return firstNumber + secondNumber;
-}
 
-// Test the function with an example expression
-const result = calculate("1+3");
-console.log(result); // natija: 4
+//==============================//
 
-/**Bu funksiya matnni qo'shish belgisi (+) orqali ikkita qismga bo'lib ajratib, 
- * ularni sonlarga o'giradi va ularni qo'shib, natijani qaytaradi. 
- * Agar matnda + belgisi bo'lmagan bo'lsa, funksiya 0 ni qaytaradi. */
+
+// // MITASK R
+// function evaluateStringExpression(expression: string): number {
+//     // If the expression is empty, return 0
+//     if (!expression) return 0;
+
+//     // Evaluate the expression using the built-in eval() function
+//     const result = eval(expression);
+
+//     // Check if the result is a number
+//     if (typeof result === 'number') {
+//         return result;
+//     } else {
+//         // If the result is not a number, return NaN (Not a Number)
+//         return NaN;
+//     }
+// }
+
+// // Test the function with an example expression
+// const expressionResult = evaluateStringExpression("1+2");
+// console.log(expressionResult); // natija: 3
+
+// /**Bu funksiya berilgan ifoda orqali matnni tekshirib, 
+//  * uni JavaScriptning eval() funksiyasi yordamida hisoblaydi. 
+//  * Agar natija raqam bo'lsa, u son holatida qaytariladi. 
+//  * Aks holda, NaN (Son emas) qaytariladi. */
+
+// //==2 usul==/
+// function calculate(expression: string): number {
+//     // If the expression is empty, return 0
+//     if (!expression) return 0;
+
+//     // Qatorning ikkita qismiga bo'lib ajratib olish
+//     const parts = expression.split('+');
+
+//     // Qismning birinchi va ikkinchi sonlarini hisoblash
+//     const firstNumber = parseInt(parts[0]);
+//     const secondNumber = parseInt(parts[1]);
+
+//     // Sonlarni qo'shib natijani qaytarish
+//     return firstNumber + secondNumber;
+// }
+
+// // Test the function with an example expression
+// const result = calculate("1+3");
+// console.log(result); // natija: 4
+
+// /**Bu funksiya matnni qo'shish belgisi (+) orqali ikkita qismga bo'lib ajratib, 
+//  * ularni sonlarga o'giradi va ularni qo'shib, natijani qaytaradi. 
+//  * Agar matnda + belgisi bo'lmagan bo'lsa, funksiya 0 ni qaytaradi. */
 
 
 
