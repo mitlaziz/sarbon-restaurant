@@ -1,31 +1,73 @@
-// MITASK S 
-function missingNumber(nums: number[]): number {
-    const n = nums.length;
-    let totalSum = (n * (n + 1)) / 2;
-    let sum = 0;
-
-    for (let i = 0; i < n; i++) {
-        sum += nums[i];
+// // * T - TASK *
+// Shunday function yozing, u sonlardan tashkil topgan 2 ta array qabul qilsin
+// va ikkala arraydagi sonlarni tartiblab bir arrayda qaytarsin
+// MASALAN: mergeSortedArrays([0,3,4,31], [4,6,30]); return [0,3,4,4,6,30,31]
+function mergeSortedArrays(arr_list1: number[], arr_list2: number[]) {
+    let newArray: number[] = [];
+    let i: number = 0;
+    let j: number = 0;
+  
+    while (i < arr_list1.length && j < arr_list2.length) {
+      if (arr_list1[i] < arr_list2[j]) {
+        newArray.push(arr_list1[i]);
+        i++;
+      } else {
+        newArray.push(arr_list2[j]);
+        j++;
+      }
     }
+  
+    // mobodo array ichida owiqcha qopketgan number bo`lsa
+    while (i < arr_list1.length) {
+      newArray.push(arr_list1[i]);
+      i++;
+    }
+  
+    while (j < arr_list2.length) {
+      newArray.push(arr_list2[j]);
+      j++;
+    }
+  
+    return newArray;
+  }
+  
+  const arr_list1: number[] = [0,3,4,31]; 
+  const arr_list2: number[] = [4,6,30]; 
+  
+  console.log(mergeSortedArrays(arr_list1, arr_list2));
 
-    return totalSum - sum;
-}
 
-// Test
-console.log(missingNumber([3, 0, 1])); // Konsolga 2 chiqadi
 
-/**Quyidagi TypeScript funktsiyasi berilgan sonlardan tashkil topgan massivni qabul qilib, 
- * massivdagi o'rinboshsiz sonni topib uni qaytaradi:
+//=====================//
 
-Ushbu funktsiya quyidagi tartibda ishlaydi:
+// // MITASK S 
+// function missingNumber(nums: number[]): number {
+//     const n = nums.length;
+//     let totalSum = (n * (n + 1)) / 2;
+//     let sum = 0;
 
-1. `n` o'zgaruvchisiga massiv uzunligi olinadi.
-2. `totalSum` o'zgaruvchisiga 0 dan n gacha bo'lgan butun sonlar yig'indisini topish formulasi orqali hisoblanadi.
-3. `sum` o'zgaruvchisiga massivdagi barcha elementlar yig'indisi hisoblanadi.
-4. `totalSum` va `sum` ni ayirmoq orqali o'rinboshsiz son topiladi va uni qaytaradi.
+//     for (let i = 0; i < n; i++) {
+//         sum += nums[i];
+//     }
 
-Yuqoridagi misolda `missingNumber([3, 0, 1])` ni chaqirganimizda konsolga 2 chiqadi, 
-chunki 0, 1, va 3 sonlari orasida 2 tushib qolgan son. */
+//     return totalSum - sum;
+// }
+
+// // Test
+// console.log(missingNumber([3, 0, 1])); // Konsolga 2 chiqadi
+
+// /**Quyidagi TypeScript funktsiyasi berilgan sonlardan tashkil topgan massivni qabul qilib, 
+//  * massivdagi o'rinboshsiz sonni topib uni qaytaradi:
+
+// Ushbu funktsiya quyidagi tartibda ishlaydi:
+
+// 1. `n` o'zgaruvchisiga massiv uzunligi olinadi.
+// 2. `totalSum` o'zgaruvchisiga 0 dan n gacha bo'lgan butun sonlar yig'indisini topish formulasi orqali hisoblanadi.
+// 3. `sum` o'zgaruvchisiga massivdagi barcha elementlar yig'indisi hisoblanadi.
+// 4. `totalSum` va `sum` ni ayirmoq orqali o'rinboshsiz son topiladi va uni qaytaradi.
+
+// Yuqoridagi misolda `missingNumber([3, 0, 1])` ni chaqirganimizda konsolga 2 chiqadi, 
+// chunki 0, 1, va 3 sonlari orasida 2 tushib qolgan son. */
 
 
 //==============================//
