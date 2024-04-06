@@ -1,17 +1,49 @@
-// MITASK U 
-// Shunday function yozing, uni number parametri bolsin va 0 dan berilgan parametrgacha bolgan oraliqdagi faqat toq sonlar nechtaligini return qilsin
-//MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
-function sumOdds(num: number): number {
-  let count = 0;
-  for (let i = 1; i <= num; i += 2) {
-      count++;
+//MITASK  U
+/**Type Scriptda Shunday function yozing, uni string parametri bolsin va stringdagi harf va 
+ * u harf necha marta takrorlangani sonidan tashkil topgan object qaytarsin.
+MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1} */
+function countChars(inputString: string): { [key: string]: number } {
+  const charCount: { [key: string]: number } = {};
+
+  for (let char of inputString) {
+      char = char.toLowerCase(); // Harflarni kichik harflarga aylantiramiz
+      if (charCount[char]) {
+          charCount[char]++;
+      } else {
+          charCount[char] = 1;
+      }
   }
-  return count;
+
+  return charCount;
 }
 
-// Test qiling
-console.log(sumOdds(9)); // 4
-console.log(sumOdds(11)); // 6
+// Test qilish
+console.log(countChars("helloJohn")); // { h: 2, e: 1, l: 2, o: 2, j: 1, n: 1,}
+
+/**Ushbu kod yordamida countChars funksiyasi string parametr qabul qilib, 
+ * har bir harfni necha marta takrorlanganligini hisoblaydi va natijada ob'ekt shaklida qaytaradi, 
+ * har bir harf uchun necha marta takrorlanganligini ko'rsatadi. Bu kod barcha kichik va 
+ * katta harflarni bir qatorda qabul qiladi, shuningdek, katta-kichik harf farqini ko'rib chiqaradi. */
+
+
+
+//===========================//
+
+
+// // MITASK U 
+// // Shunday function yozing, uni number parametri bolsin va 0 dan berilgan parametrgacha bolgan oraliqdagi faqat toq sonlar nechtaligini return qilsin
+// //MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
+// function sumOdds(num: number): number {
+//   let count = 0;
+//   for (let i = 1; i <= num; i += 2) {
+//       count++;
+//   }
+//   return count;
+// }
+
+// // Test qiling
+// console.log(sumOdds(9)); // 4
+// console.log(sumOdds(11)); // 6
 
 
  
