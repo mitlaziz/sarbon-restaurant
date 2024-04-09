@@ -1,24 +1,50 @@
-//MITASK  U
-/**Type Scriptda Shunday function yozing, uni string parametri bolsin va stringdagi harf va 
- * u harf necha marta takrorlangani sonidan tashkil topgan object qaytarsin.
-MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1} */
-function countChars(inputString: string): { [key: string]: number } {
-  const charCount: { [key: string]: number } = {};
+//MITASK  W
 
-  for (let char of inputString) {
-      char = char.toLowerCase(); // Harflarni kichik harflarga aylantiramiz
-      if (charCount[char]) {
-          charCount[char]++;
-      } else {
-          charCount[char] = 1;
-      }
-  }
-
-  return charCount;
+function chunkArray<T>(arr: T[], size: number): T[][] {
+    const result: T[][] = [];
+    for (let i = 0; i < arr.length; i += size) {
+        result.push(arr.slice(i, i + size));
+    }
+    return result;
 }
 
-// Test qilish
-console.log(countChars("helloJohn")); // { h: 2, e: 1, l: 2, o: 2, j: 1, n: 1,}
+// Test
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16];
+const chunkedArray = chunkArray(arr, 4);
+console.log(chunkedArray); // Output: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
+
+/**Ushbu kod chunkArray nomli generic funksiya yaratadi. 
+ * Bu funksiya berilgan massivni berilgan uzunlikda kesib chiqib, 
+ * natijada yangi bir massiv ro'yxatida qaytaradi. 
+ * Keyinchalik, siz boshqa massivlar bilan ham ushbu funksiyani sinab ko'rishingiz mumkin. */
+
+
+
+
+
+//====================//
+
+// //MITASK  U
+// /**Type Scriptda Shunday function yozing, uni string parametri bolsin va stringdagi harf va 
+//  * u harf necha marta takrorlangani sonidan tashkil topgan object qaytarsin.
+// MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1} */
+// function countChars(inputString: string): { [key: string]: number } {
+//   const charCount: { [key: string]: number } = {};
+
+//   for (let char of inputString) {
+//       char = char.toLowerCase(); // Harflarni kichik harflarga aylantiramiz
+//       if (charCount[char]) {
+//           charCount[char]++;
+//       } else {
+//           charCount[char] = 1;
+//       }
+//   }
+
+//   return charCount;
+// }
+
+// // Test qilish
+// console.log(countChars("helloJohn")); // { h: 2, e: 1, l: 2, o: 2, j: 1, n: 1,}
 
 /**Ushbu kod yordamida countChars funksiyasi string parametr qabul qilib, 
  * har bir harfni necha marta takrorlanganligini hisoblaydi va natijada ob'ekt shaklida qaytaradi, 
