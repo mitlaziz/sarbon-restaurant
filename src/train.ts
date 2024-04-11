@@ -1,22 +1,61 @@
-//MITASK  W
+// MITASK  X
+//**Shunday function yozing, uni object va string parapetrlari bolsin. 
+//Function string parametri object ichida necha marotaba 
+//takrorlanganligini qaytarsin (nested object bolsa ham sanasin)
+ 
+function countOccurrences(obj: any, key: string): number {
+    let count = 0;
 
-function chunkArray<T>(arr: T[], size: number): T[][] {
-    const result: T[][] = [];
-    for (let i = 0; i < arr.length; i += size) {
-        result.push(arr.slice(i, i + size));
+    // Rekursiv funksiya orqali nested objectlarni ham tekshiramiz
+    function countInObject(obj: any) {
+        for (const prop in obj) {
+            if (obj.hasOwnProperty(prop)) {
+                if (typeof obj[prop] === 'object') {
+                    countInObject(obj[prop]); // Agar propertiyani object bo'lsa, rekursiv chaqirib tekshiramiz
+                } else if (prop === key && typeof obj[prop] === 'string') {
+                    count++;
+                }
+            }
+        }
     }
-    return result;
+
+    countInObject(obj); // Asosiy funksiyani chaqiramiz
+    return count;
 }
 
-// Test
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16];
-const chunkedArray = chunkArray(arr, 4);
-console.log(chunkedArray); // Output: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
+// Test qilish
+console.log(countOccurrences({
+    model: 'Bugatti', 
+    steer: {model: 'HANKOOK', 
+    size: 30}}, 'model')); // 2
 
-/**Ushbu kod chunkArray nomli generic funksiya yaratadi. 
- * Bu funksiya berilgan massivni berilgan uzunlikda kesib chiqib, 
- * natijada yangi bir massiv ro'yxatida qaytaradi. 
- * Keyinchalik, siz boshqa massivlar bilan ham ushbu funksiyani sinab ko'rishingiz mumkin. */
+ /**Bu TypeScript-da berilgan objectni o'z ichida yoki nested objectlarda 
+  * qaysi belgi necha martaba takrorlanganligini hisoblaydigan funksiya. */   
+
+
+
+
+//=================================//
+
+// //MITASK  W
+
+// function chunkArray<T>(arr: T[], size: number): T[][] {
+//     const result: T[][] = [];
+//     for (let i = 0; i < arr.length; i += size) {
+//         result.push(arr.slice(i, i + size));
+//     }
+//     return result;
+// }
+
+// // Test
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16];
+// const chunkedArray = chunkArray(arr, 4);
+// console.log(chunkedArray); // Output: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
+
+// /**Ushbu kod chunkArray nomli generic funksiya yaratadi. 
+//  * Bu funksiya berilgan massivni berilgan uzunlikda kesib chiqib, 
+//  * natijada yangi bir massiv ro'yxatida qaytaradi. 
+//  * Keyinchalik, siz boshqa massivlar bilan ham ushbu funksiyani sinab ko'rishingiz mumkin. */
 
 
 
