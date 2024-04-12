@@ -1,33 +1,62 @@
-// MITASK  X
-//**Shunday function yozing, uni object va string parapetrlari bolsin. 
-//Function string parametri object ichida necha marotaba 
-//takrorlanganligini qaytarsin (nested object bolsa ham sanasin)
- 
-function countOccurrences(obj: any, key: string): number {
-    let count = 0;
+// MITASK  Y
+/**Shunday function yozing, uni 2 ta array parapetri bolsin. 
+ * Function ikkala arrayda ham ishtirok etgan qiymatlarni bir arrayda qaytarsin
+ MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3]
+ */
+ function findIntersection(arr1: number[], arr2: number[]): number[] {
+    const intersection: number[] = [];
 
-    // Rekursiv funksiya orqali nested objectlarni ham tekshiramiz
-    function countInObject(obj: any) {
-        for (const prop in obj) {
-            if (obj.hasOwnProperty(prop)) {
-                if (typeof obj[prop] === 'object') {
-                    countInObject(obj[prop]); // Agar propertiyani object bo'lsa, rekursiv chaqirib tekshiramiz
-                } else if (prop === key && typeof obj[prop] === 'string') {
-                    count++;
-                }
-            }
+    // Birinchi arraydagi har bir elementni tekshirish
+    for (const num of arr1) {
+        // Agar ikkinchi arrayda bu element mavjud bo'lsa va hali ro'yxatda yo'qligini tekshiramiz
+        if (arr2.includes(num) && !intersection.includes(num)) {
+            // Agar shart bajarilgan bo'lsa, bu elementni intersection ro'yxatiga qo'shamiz
+            intersection.push(num);
         }
     }
 
-    countInObject(obj); // Asosiy funksiyani chaqiramiz
-    return count;
+    return intersection;
 }
 
 // Test qilish
-console.log(countOccurrences({
-    model: 'Bugatti', 
-    steer: {model: 'HANKOOK', 
-    size: 30}}, 'model')); // 2
+console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
+/**Bu funksiya arr1 va arr2 deb nomlangan ikkala array qabul qiladi, 
+ * va ular orasida bir xil elementlarni topib, ularni yangi bir arrayda qaytaradi. */
+
+
+
+//====================//
+
+// // MITASK  X
+// //**Shunday function yozing, uni object va string parapetrlari bolsin. 
+// //Function string parametri object ichida necha marotaba 
+// //takrorlanganligini qaytarsin (nested object bolsa ham sanasin)
+ 
+// function countOccurrences(obj: any, key: string): number {
+//     let count = 0;
+
+//     // Rekursiv funksiya orqali nested objectlarni ham tekshiramiz
+//     function countInObject(obj: any) {
+//         for (const prop in obj) {
+//             if (obj.hasOwnProperty(prop)) {
+//                 if (typeof obj[prop] === 'object') {
+//                     countInObject(obj[prop]); // Agar propertiyani object bo'lsa, rekursiv chaqirib tekshiramiz
+//                 } else if (prop === key && typeof obj[prop] === 'string') {
+//                     count++;
+//                 }
+//             }
+//         }
+//     }
+
+//     countInObject(obj); // Asosiy funksiyani chaqiramiz
+//     return count;
+// }
+
+// // Test qilish
+// console.log(countOccurrences({
+//     model: 'Bugatti', 
+//     steer: {model: 'HANKOOK', 
+//     size: 30}}, 'model')); // 2
 
  /**Bu TypeScript-da berilgan objectni o'z ichida yoki nested objectlarda 
   * qaysi belgi necha martaba takrorlanganligini hisoblaydigan funksiya. */   
