@@ -20,6 +20,7 @@ export interface Order {
   memberId: ObjectId;
   createdAt: Date;
   updatedAt: Date;
+  /** from aggregate**/
   orderItems: OrderItem[];
   productData: Product[];
 }
