@@ -1,37 +1,52 @@
-// MITASK  Y
-/**Shunday function yozing, uni 2 ta array parapetri bolsin. 
- * Function ikkala arrayda ham ishtirok etgan qiymatlarni bir arrayda qaytarsin
- MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3]
- */
- function findIntersection(arr1: number[], arr2: number[]): number[] {
-    const intersection: number[] = [];
-
-    // Birinchi arraydagi har bir elementni tekshirish
-    for (const num of arr1) {
-        // Agar ikkinchi arrayda bu element mavjud bo'lsa va hali ro'yxatda yo'qligini tekshiramiz
-        if (arr2.includes(num) && !intersection.includes(num)) {
-            // Agar shart bajarilgan bo'lsa, bu elementni intersection ro'yxatiga qo'shamiz
-            intersection.push(num);
-        }
+//MITASK  Z
+/**type scriptda Shunday function yozing, u sonlardan tashkil topgan array qabul qilsin.
+ *  Function arraydagi juft sonlarni yigindisini qaytarsin.
+MASALAN: sumEvens([1,2,3]) return 2 */
+function juftSonlarniYigindisi(arr: number[]): number {
+  let yigindi = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      yigindi += arr[i];
     }
-
-    return intersection;
+  }
+  return yigindi;
 }
+console.log(juftSonlarniYigindisi([1, 2, 3]));
 
-// Test qilish
-console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
-/**Bu funksiya arr1 va arr2 deb nomlangan ikkala array qabul qiladi, 
- * va ular orasida bir xil elementlarni topib, ularni yangi bir arrayda qaytaradi. */
+//===================//
 
+// // MITASK  Y
+// /**Shunday function yozing, uni 2 ta array parapetri bolsin.
+//  * Function ikkala arrayda ham ishtirok etgan qiymatlarni bir arrayda qaytarsin
+//  MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3]
+//  */
+//  function findIntersection(arr1: number[], arr2: number[]): number[] {
+//     const intersection: number[] = [];
 
+//     // Birinchi arraydagi har bir elementni tekshirish
+//     for (const num of arr1) {
+//         // Agar ikkinchi arrayda bu element mavjud bo'lsa va hali ro'yxatda yo'qligini tekshiramiz
+//         if (arr2.includes(num) && !intersection.includes(num)) {
+//             // Agar shart bajarilgan bo'lsa, bu elementni intersection ro'yxatiga qo'shamiz
+//             intersection.push(num);
+//         }
+//     }
+
+//     return intersection;
+// }
+
+// // Test qilish
+// console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
+// /**Bu funksiya arr1 va arr2 deb nomlangan ikkala array qabul qiladi,
+//  * va ular orasida bir xil elementlarni topib, ularni yangi bir arrayda qaytaradi. */
 
 //====================//
 
 // // MITASK  X
-// //**Shunday function yozing, uni object va string parapetrlari bolsin. 
-// //Function string parametri object ichida necha marotaba 
+// //**Shunday function yozing, uni object va string parapetrlari bolsin.
+// //Function string parametri object ichida necha marotaba
 // //takrorlanganligini qaytarsin (nested object bolsa ham sanasin)
- 
+
 // function countOccurrences(obj: any, key: string): number {
 //     let count = 0;
 
@@ -54,15 +69,12 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 
 // // Test qilish
 // console.log(countOccurrences({
-//     model: 'Bugatti', 
-//     steer: {model: 'HANKOOK', 
+//     model: 'Bugatti',
+//     steer: {model: 'HANKOOK',
 //     size: 30}}, 'model')); // 2
 
- /**Bu TypeScript-da berilgan objectni o'z ichida yoki nested objectlarda 
-  * qaysi belgi necha martaba takrorlanganligini hisoblaydigan funksiya. */   
-
-
-
+/**Bu TypeScript-da berilgan objectni o'z ichida yoki nested objectlarda
+ * qaysi belgi necha martaba takrorlanganligini hisoblaydigan funksiya. */
 
 //=================================//
 
@@ -81,19 +93,15 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // const chunkedArray = chunkArray(arr, 4);
 // console.log(chunkedArray); // Output: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
 
-// /**Ushbu kod chunkArray nomli generic funksiya yaratadi. 
-//  * Bu funksiya berilgan massivni berilgan uzunlikda kesib chiqib, 
-//  * natijada yangi bir massiv ro'yxatida qaytaradi. 
+// /**Ushbu kod chunkArray nomli generic funksiya yaratadi.
+//  * Bu funksiya berilgan massivni berilgan uzunlikda kesib chiqib,
+//  * natijada yangi bir massiv ro'yxatida qaytaradi.
 //  * Keyinchalik, siz boshqa massivlar bilan ham ushbu funksiyani sinab ko'rishingiz mumkin. */
-
-
-
-
 
 //====================//
 
 // //MITASK  U
-// /**Type Scriptda Shunday function yozing, uni string parametri bolsin va stringdagi harf va 
+// /**Type Scriptda Shunday function yozing, uni string parametri bolsin va stringdagi harf va
 //  * u harf necha marta takrorlangani sonidan tashkil topgan object qaytarsin.
 // MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1} */
 // function countChars(inputString: string): { [key: string]: number } {
@@ -114,17 +122,14 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // // Test qilish
 // console.log(countChars("helloJohn")); // { h: 2, e: 1, l: 2, o: 2, j: 1, n: 1,}
 
-/**Ushbu kod yordamida countChars funksiyasi string parametr qabul qilib, 
- * har bir harfni necha marta takrorlanganligini hisoblaydi va natijada ob'ekt shaklida qaytaradi, 
- * har bir harf uchun necha marta takrorlanganligini ko'rsatadi. Bu kod barcha kichik va 
+/**Ushbu kod yordamida countChars funksiyasi string parametr qabul qilib,
+ * har bir harfni necha marta takrorlanganligini hisoblaydi va natijada ob'ekt shaklida qaytaradi,
+ * har bir harf uchun necha marta takrorlanganligini ko'rsatadi. Bu kod barcha kichik va
  * katta harflarni bir qatorda qabul qiladi, shuningdek, katta-kichik harf farqini ko'rib chiqaradi. */
-
-
 
 //===========================//
 
-
-// // MITASK U 
+// // MITASK U
 // // Shunday function yozing, uni number parametri bolsin va 0 dan berilgan parametrgacha bolgan oraliqdagi faqat toq sonlar nechtaligini return qilsin
 // //MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
 // function sumOdds(num: number): number {
@@ -139,9 +144,6 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // console.log(sumOdds(9)); // 4
 // console.log(sumOdds(11)); // 6
 
-
- 
-
 //========================//
 
 // // // * T - TASK *
@@ -152,7 +154,7 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 //     let newArray: number[] = [];
 //     let i: number = 0;
 //     let j: number = 0;
-  
+
 //     while (i < arr_list1.length && j < arr_list2.length) {
 //       if (arr_list1[i] < arr_list2[j]) {
 //         newArray.push(arr_list1[i]);
@@ -162,31 +164,29 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 //         j++;
 //       }
 //     }
-  
+
 //     // mobodo array ichida owiqcha qopketgan number bo`lsa
 //     while (i < arr_list1.length) {
 //       newArray.push(arr_list1[i]);
 //       i++;
 //     }
-  
+
 //     while (j < arr_list2.length) {
 //       newArray.push(arr_list2[j]);
 //       j++;
 //     }
-  
+
 //     return newArray;
 //   }
-  
-//   const arr_list1: number[] = [0,3,4,31]; 
-//   const arr_list2: number[] = [4,6,30]; 
-  
+
+//   const arr_list1: number[] = [0,3,4,31];
+//   const arr_list2: number[] = [4,6,30];
+
 //   console.log(mergeSortedArrays(arr_list1, arr_list2));
-
-
 
 //=====================//
 
-// // MITASK S 
+// // MITASK S
 // function missingNumber(nums: number[]): number {
 //     const n = nums.length;
 //     let totalSum = (n * (n + 1)) / 2;
@@ -202,7 +202,7 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // // Test
 // console.log(missingNumber([3, 0, 1])); // Konsolga 2 chiqadi
 
-// /**Quyidagi TypeScript funktsiyasi berilgan sonlardan tashkil topgan massivni qabul qilib, 
+// /**Quyidagi TypeScript funktsiyasi berilgan sonlardan tashkil topgan massivni qabul qilib,
 //  * massivdagi o'rinboshsiz sonni topib uni qaytaradi:
 
 // Ushbu funktsiya quyidagi tartibda ishlaydi:
@@ -212,12 +212,10 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // 3. `sum` o'zgaruvchisiga massivdagi barcha elementlar yig'indisi hisoblanadi.
 // 4. `totalSum` va `sum` ni ayirmoq orqali o'rinboshsiz son topiladi va uni qaytaradi.
 
-// Yuqoridagi misolda `missingNumber([3, 0, 1])` ni chaqirganimizda konsolga 2 chiqadi, 
+// Yuqoridagi misolda `missingNumber([3, 0, 1])` ni chaqirganimizda konsolga 2 chiqadi,
 // chunki 0, 1, va 3 sonlari orasida 2 tushib qolgan son. */
 
-
 //==============================//
-
 
 // // MITASK R
 // function evaluateStringExpression(expression: string): number {
@@ -240,9 +238,9 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // const expressionResult = evaluateStringExpression("1+2");
 // console.log(expressionResult); // natija: 3
 
-// /**Bu funksiya berilgan ifoda orqali matnni tekshirib, 
-//  * uni JavaScriptning eval() funksiyasi yordamida hisoblaydi. 
-//  * Agar natija raqam bo'lsa, u son holatida qaytariladi. 
+// /**Bu funksiya berilgan ifoda orqali matnni tekshirib,
+//  * uni JavaScriptning eval() funksiyasi yordamida hisoblaydi.
+//  * Agar natija raqam bo'lsa, u son holatida qaytariladi.
 //  * Aks holda, NaN (Son emas) qaytariladi. */
 
 // //==2 usul==/
@@ -265,31 +263,26 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // const result = calculate("1+3");
 // console.log(result); // natija: 4
 
-// /**Bu funksiya matnni qo'shish belgisi (+) orqali ikkita qismga bo'lib ajratib, 
-//  * ularni sonlarga o'giradi va ularni qo'shib, natijani qaytaradi. 
+// /**Bu funksiya matnni qo'shish belgisi (+) orqali ikkita qismga bo'lib ajratib,
+//  * ularni sonlarga o'giradi va ularni qo'shib, natijani qaytaradi.
 //  * Agar matnda + belgisi bo'lmagan bo'lsa, funksiya 0 ni qaytaradi. */
-
-
 
 //====================================//
 
-
-
 // // MITASK Q
-// /**TypeScriptda Shunday function yozing, u 2 ta parametrgga ega bolib 
-//  * birinchisi object, ikkinchisi string. 
-//  * Agar string parametri objectning propertysi bolsa true, 
+// /**TypeScriptda Shunday function yozing, u 2 ta parametrgga ega bolib
+//  * birinchisi object, ikkinchisi string.
+//  * Agar string parametri objectning propertysi bolsa true,
 //  * propertysi bolmasa false qaytarsin.
-// MASALAN: hasProperty({name: "BMW", model: "M3"}, "model") return true; 
+// MASALAN: hasProperty({name: "BMW", model: "M3"}, "model") return true;
 // hasProperty({name: "BMW", model: "M3"}, "year") return false */
 // function hasProperty(obj: object, propName: string): boolean {
 //     return obj.hasOwnProperty(propName);
 // }
 
-// // Test qilamiz 
+// // Test qilamiz
 // console.log(hasProperty({name: "BMW", model: "M3"}, "model")); // true
 // console.log(hasProperty({name: "BMW", model: "M3"}, "year")); // false
-
 
 // //=========================//
 
@@ -303,7 +296,6 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // console.log(checkPropertyExists(myObject, "address"));  // false
 // //
 
-
 //=======================================//
 // //MIT Task P
 // //TypeScriptda Shunday function yozing, u object qabul qilsin va arrayni object arrayga otkazib arrayni qaytarsin qaytarsin.
@@ -315,8 +307,8 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // // Test
 // const result = objectToArray({ a: 10, b: 20 });
 // console.log(result);  // Narx bo'yicha massiv: [['a', 10], ['b', 20]]
-// // Bu funktsiya berilgan obyektni iteratsiya qiladi va har bir xususiyat va 
-// // uning qiymatini bir qatorning elementi sifatida qaytaradi. 
+// // Bu funktsiya berilgan obyektni iteratsiya qiladi va har bir xususiyat va
+// // uning qiymatini bir qatorning elementi sifatida qaytaradi.
 // // Object.entries funktsiyasi bu maqsadga mos keladi.
 // // Test qismida kodni sinash uchun:
 
@@ -328,11 +320,9 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // const result2 = objectToArray({ a: 10, b: 20 });
 // console.log(result); // Narx bo'yicha massiv: [['a', 10], ['b', 20]]
 
-
-
 //=======================================//
 // //Mit Task O
-// //Quyidagi TypeScript funksiyasi, har xil valuelardan iborat array qabul qilib, 
+// //Quyidagi TypeScript funksiyasi, har xil valuelardan iborat array qabul qilib,
 // //faqat sonlarni hisoblab chiqadi va ularni yig'indisini qaytaradi:
 // function calculateSumOfNumbers(array: any[]): number {
 //     let sum: number = 0;
@@ -349,11 +339,10 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // // Funksiyani sinov uchun
 // console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35])); // Natija: 45
 
-// //Bu kod faqat sonlarni hisoblash uchun typeof operatorini va isNaN() funksiyasini ishlatadi. 
-// //Bu, son emas bo'lgan qiymatlarni hisobga olmaydi. Sizning masalangizda, 
-// //son emas bo'lgan qiymatlar hisobga olinmaydi, shuningdek, 
+// //Bu kod faqat sonlarni hisoblash uchun typeof operatorini va isNaN() funksiyasini ishlatadi.
+// //Bu, son emas bo'lgan qiymatlarni hisobga olmaydi. Sizning masalangizda,
+// //son emas bo'lgan qiymatlar hisobga olinmaydi, shuningdek,
 // //"10" qiymati son sifatida hisoblanadi. Natijada, 45 qaytariladi.
-
 
 //==================//
 
@@ -387,11 +376,11 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // console.log(isPalindrome("hello")); // false
 // console.log(isPalindrome("A man a plan a canal Panama")); // true
 
-// //Bu funksiya berilgan sozning palindrom bo'lib bo'lmagligini tekshiradi. 
+// //Bu funksiya berilgan sozning palindrom bo'lib bo'lmagligini tekshiradi.
 // //Kichik harflarga o'tkazish va simvollarni olib tashlash qo'shimcha qadam bo'lib,
-//  //bu funksiya berilgan sozni to'g'ri o'qilganda ham, orqasidan o'qilganda ham 
+//  //bu funksiya berilgan sozni to'g'ri o'qilganda ham, orqasidan o'qilganda ham
 //  //bir hil oqiladi yoki yo'qmi, shuni tekshiradi.
- 
+
 //=============//
 // // Mit Task M
 // function getSquareNumbers(numbers: number[]): { number: number; square: number }[] {
@@ -436,7 +425,6 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // const result = reverseSentence("I am the best Software engineer!");
 // console.log(result); // Natija: ew ekil gnidoc
 
-
 // //Mit task K
 // function unliHarflarSoni(text:string): number {
 //   const unliHarflar = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
@@ -453,9 +441,7 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // const text = "Alhamdulillah for everything";
 // console.log('unliHarflarSoni:', unliHarflarSoni(text));
 
-
-
-// //MIT Task I 
+// //MIT Task I
 // function findLongestWord(str: any) {
 //     // Split the string into array
 //     let strSplit = str.split(" ");
@@ -469,10 +455,10 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 // function getDigits(input: string): string {
 //     // Regex pattern to match digits
 //     const regex = /\d/g;
-    
+
 //     // Extract digits from the input string
 //     const digitsArray = input.match(regex);
-    
+
 //     // Join the extracted digits into a new string
 //     if (digitsArray) {
 //         return digitsArray.join("");
@@ -483,7 +469,6 @@ console.log(findIntersection([1, 2, 3], [3, 2, 0])); // Natija: [2, 3]
 
 // // Test the function
 // console.log(getDigits("m14i1t")); // Output: "141"
-
 
 /* Project Standards:
    - Logging standards
@@ -511,12 +496,12 @@ GraphQL API
 
  */
 
- /** Cookies
+/** Cookies
   request join
   self destroy
   */
 
-  /** VValidation:
+/** VValidation:
    Frontend validation
    Pipe validaton- lekin Burakda iwlatmaymiz
    Backend validation
@@ -535,7 +520,6 @@ GraphQL API
 // }
 
 // console.log(getPositive([3, -6, 9]));  // Output: "12"
-
 
 // // Task H
 // function gerReverse(input: string): string {
