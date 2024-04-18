@@ -1,17 +1,41 @@
-//MITASK  Z
-/**type scriptda Shunday function yozing, u sonlardan tashkil topgan array qabul qilsin.
- *  Function arraydagi juft sonlarni yigindisini qaytarsin.
-MASALAN: sumEvens([1,2,3]) return 2 */
-function juftSonlarniYigindisi(arr: number[]): number {
-  let yigindi = 0;
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] % 2 === 0) {
-      yigindi += arr[i];
-    }
-  }
-  return yigindi;
+//MITASK ZA
+/**type scriptda Shunday function yozing, u array ichidagi objectlarni “age” qiymati boyicha sortlab bersin. 
+MASALAN: sortByAge([{age:23}, {age:21}, {age:13}]) return [{age:13}, {age:21}, {age:23}] */
+
+interface Person {
+  age: number;
 }
-console.log(juftSonlarniYigindisi([1, 2, 3]));
+
+function sortByAge(people: Person[]): Person[] {
+  return people.slice().sort((a, b) => a.age - b.age);
+}
+
+// Test
+const sortedPeople = sortByAge([{ age: 23 }, { age: 21 }, { age: 13 }]);
+console.log(sortedPeople); // [{ age: 13 }, { age: 21 }, { age: 23 }]
+
+/**Ushbu kodda, Person interfeysi obyektlarning age xususiyatini aks ettiradi.
+ * sortByAge funksiyasi obyektlar to'plamini qabul qilib,
+ * uning age xususiyatiga ko'ra saralash bo'yicha tartiblash uchun
+ * sort funktsiyasidan foydalanadi. Afsuski, slice metodi orijinal massivni o'zgartirmaydi,
+ * shuning uchun uni o'zgartirmasdan ishlatishimiz mumkin. */
+
+//======================
+
+// //MITASK  Z
+// /**type scriptda Shunday function yozing, u sonlardan tashkil topgan array qabul qilsin.
+//  *  Function arraydagi juft sonlarni yigindisini qaytarsin.
+// MASALAN: sumEvens([1,2,3]) return 2 */
+// function juftSonlarniYigindisi(arr: number[]): number {
+//   let yigindi = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] % 2 === 0) {
+//       yigindi += arr[i];
+//     }
+//   }
+//   return yigindi;
+// }
+// console.log(juftSonlarniYigindisi([1, 2, 3]));
 
 //===================//
 
