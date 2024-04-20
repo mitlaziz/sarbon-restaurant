@@ -1,24 +1,37 @@
-//MITASK ZA
-/**type scriptda Shunday function yozing, u array ichidagi objectlarni “age” qiymati boyicha sortlab bersin. 
-MASALAN: sortByAge([{age:23}, {age:21}, {age:13}]) return [{age:13}, {age:21}, {age:23}] */
-
-interface Person {
-  age: number;
+//MITASK ZB
+/**type scriptda Shunday function yozing, uni 2 ta number parametri bolsin va
+ *  berilgan sonlar orasidan random raqam return qilsin
+MASALAN: randomBetween(30, 50) return 45
+ */
+function randomBetween(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+const random: number = randomBetween(30, 50);
+console.log("randomBetween:", random);
 
-function sortByAge(people: Person[]): Person[] {
-  return people.slice().sort((a, b) => a.age - b.age);
-}
+//===================//
 
-// Test
-const sortedPeople = sortByAge([{ age: 23 }, { age: 21 }, { age: 13 }]);
-console.log(sortedPeople); // [{ age: 13 }, { age: 21 }, { age: 23 }]
+// //MITASK ZA
+// /**type scriptda Shunday function yozing, u array ichidagi objectlarni “age” qiymati boyicha sortlab bersin.
+// MASALAN: sortByAge([{age:23}, {age:21}, {age:13}]) return [{age:13}, {age:21}, {age:23}] */
 
-/**Ushbu kodda, Person interfeysi obyektlarning age xususiyatini aks ettiradi.
- * sortByAge funksiyasi obyektlar to'plamini qabul qilib,
- * uning age xususiyatiga ko'ra saralash bo'yicha tartiblash uchun
- * sort funktsiyasidan foydalanadi. Afsuski, slice metodi orijinal massivni o'zgartirmaydi,
- * shuning uchun uni o'zgartirmasdan ishlatishimiz mumkin. */
+// interface Person {
+//   age: number;
+// }
+
+// function sortByAge(people: Person[]): Person[] {
+//   return people.slice().sort((a, b) => a.age - b.age);
+// }
+
+// // Test
+// const sortedPeople = sortByAge([{ age: 23 }, { age: 21 }, { age: 13 }]);
+// console.log(sortedPeople); // [{ age: 13 }, { age: 21 }, { age: 23 }]
+
+// /**Ushbu kodda, Person interfeysi obyektlarning age xususiyatini aks ettiradi.
+//  * sortByAge funksiyasi obyektlar to'plamini qabul qilib,
+//  * uning age xususiyatiga ko'ra saralash bo'yicha tartiblash uchun
+//  * sort funktsiyasidan foydalanadi. Afsuski, slice metodi orijinal massivni o'zgartirmaydi,
+//  * shuning uchun uni o'zgartirmasdan ishlatishimiz mumkin. */
 
 //======================
 
