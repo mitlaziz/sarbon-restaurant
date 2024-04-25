@@ -1,14 +1,39 @@
 // MITASK ZC
-//type scriptda Shunday function yozing, uni number parametri bolsin va function qabul
-// parametrni selsiy miqdori sifatida qabul qilib uni farenhitga ozgartirib bersin
-//MASALAN: celsiusToFahrenheit(0) return 32
-
-function celsiusToFahrenheit(celsius: number): number {
-  return (celsius * 9) / 5 + 32;
+/**type scriptda Shunday function yozing, uni number, array va number 
+ * parametrlari bolsin va berilgan 1-parametr numberga teng indexni 
+ * array ichidan topib 3-parametrdagi raqam bilan almashtirib yangilangan arrayni qaytarsin
+MASALAN: changeNumberInArray(1, [1,3,7,2], 2) return [1,2,7,2] */
+function changeNumberInArray(
+  index: number,
+  array: number[],
+  newNumber: number
+): number[] {
+  // Berilgan indeksdagi raqamni almashtirish
+  array[index] = newNumber;
+  // Yangilangan arrayni qaytarish
+  return array;
 }
 
-// Test
-console.log(celsiusToFahrenheit(0)); // 32
+// Test qilish
+console.log(changeNumberInArray(1, [1, 3, 7, 2], 2)); // [1, 2, 7, 2]
+
+/**Bu kod, berilgan indeksdagi raqamni o'zgartiradi va yangilangan arrayni qaytaradi.
+ *  Test qilish uchun console.log funktsiyasi yordamida funksiyani chaqirib
+ *  natijani ko'rsatamiz. */
+
+//====================
+
+// // MITASK ZC
+// //type scriptda Shunday function yozing, uni number parametri bolsin va function qabul
+// // parametrni selsiy miqdori sifatida qabul qilib uni farenhitga ozgartirib bersin
+// //MASALAN: celsiusToFahrenheit(0) return 32
+
+// function celsiusToFahrenheit(celsius: number): number {
+//   return (celsius * 9) / 5 + 32;
+// }
+
+// // Test
+// console.log(celsiusToFahrenheit(0)); // 32
 
 //========================//
 
