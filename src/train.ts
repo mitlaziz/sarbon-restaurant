@@ -1,21 +1,41 @@
-// MITASK ZC
-/**type scriptda Shunday function yozing, uni number, array va number 
- * parametrlari bolsin va berilgan 1-parametr numberga teng indexni 
- * array ichidan topib 3-parametrdagi raqam bilan almashtirib yangilangan arrayni qaytarsin
-MASALAN: changeNumberInArray(1, [1,3,7,2], 2) return [1,2,7,2] */
-function changeNumberInArray(
-  index: number,
-  array: number[],
-  newNumber: number
-): number[] {
-  // Berilgan indeksdagi raqamni almashtirish
-  array[index] = newNumber;
-  // Yangilangan arrayni qaytarish
-  return array;
+// MITASK ZE
+/**User
+type scriptda Shunday function yozing, uni  string parametri bolsin. 
+String ichida takrorlangan harflarni olib tashlab qolganini qaytarsin
+MASALAN: removeDuplicate('stringg') return 'string' */
+
+function removeDuplicate(input: string): string {
+  let result = "";
+  for (let i = 0; i < input.length; i++) {
+    if (input.indexOf(input[i]) === input.lastIndexOf(input[i])) {
+      result += input[i];
+    }
+  }
+  return result;
 }
 
-// Test qilish
-console.log(changeNumberInArray(1, [1, 3, 7, 2], 2)); // [1, 2, 7, 2]
+console.log(removeDuplicate("stringg")); // 'string'
+
+//==================//
+
+// // MITASK ZC
+// /**type scriptda Shunday function yozing, uni number, array va number
+//  * parametrlari bolsin va berilgan 1-parametr numberga teng indexni
+//  * array ichidan topib 3-parametrdagi raqam bilan almashtirib yangilangan arrayni qaytarsin
+// MASALAN: changeNumberInArray(1, [1,3,7,2], 2) return [1,2,7,2] */
+// function changeNumberInArray(
+//   index: number,
+//   array: number[],
+//   newNumber: number
+// ): number[] {
+//   // Berilgan indeksdagi raqamni almashtirish
+//   array[index] = newNumber;
+//   // Yangilangan arrayni qaytarish
+//   return array;
+// }
+
+// // Test qilish
+// console.log(changeNumberInArray(1, [1, 3, 7, 2], 2)); // [1, 2, 7, 2]
 
 /**Bu kod, berilgan indeksdagi raqamni o'zgartiradi va yangilangan arrayni qaytaradi.
  *  Test qilish uchun console.log funktsiyasi yordamida funksiyani chaqirib
