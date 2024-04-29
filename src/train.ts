@@ -1,20 +1,51 @@
 // MITASK ZE
-/**User
-type scriptda Shunday function yozing, uni  string parametri bolsin. 
-String ichida takrorlangan harflarni olib tashlab qolganini qaytarsin
-MASALAN: removeDuplicate('stringg') return 'string' */
+/**  type scriptda Shunday function yozing, uni string parametri bolsin. 
+ * String ichidagi har bir sozni bosh harflarini katta harf qilib qaytarsin
+ *  lekin 1 yoki 2 harfdan iborat sozlarni esa oz holicha qoldirsin.
+MASALAN: capitalizeWords('name should be a string') return 'Name Should be a String'
+**/
 
-function removeDuplicate(input: string): string {
-  let result = "";
-  for (let i = 0; i < input.length; i++) {
-    if (input.indexOf(input[i]) === input.lastIndexOf(input[i])) {
-      result += input[i];
+function capitalizeWords(sentence: string) {
+  // Funksiyaga kelgan gapni bo'sh joylarga ajratib olish
+  let words = sentence.split(" ");
+
+  // Har bir sozni bosh harfini katta qilib qaytaramiz
+  for (let i = 0; i < words.length; i++) {
+    // Agar soz 1 yoki 2 harfdan iborat bo'lsa, unga hech nima qilmaymiz
+    if (words[i].length <= 2) {
+      continue;
     }
+    // Aks holda, bosh harfini katta qilib qaytarib olamiz
+    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
   }
-  return result;
+
+  // Tuzilgan so'zlar ro'yxatini bo'sh bo'shliqlar bilan biriktiramiz
+  return words.join(" ");
 }
 
-console.log(removeDuplicate("stringg")); // 'string'
+// Funksiyani tekshirish
+console.log(capitalizeWords("name should be a string")); // Natija: 'Name Should be a String'
+
+//=======
+//========================//
+
+// // MITASK ZE
+// /**User
+// type scriptda Shunday function yozing, uni  string parametri bolsin.
+// String ichida takrorlangan harflarni olib tashlab qolganini qaytarsin
+// MASALAN: removeDuplicate('stringg') return 'string' */
+
+// function removeDuplicate(input: string): string {
+//   let result = "";
+//   for (let i = 0; i < input.length; i++) {
+//     if (input.indexOf(input[i]) === input.lastIndexOf(input[i])) {
+//       result += input[i];
+//     }
+//   }
+//   return result;
+// }
+
+// console.log(removeDuplicate("stringg")); // 'string'
 
 //==================//
 
