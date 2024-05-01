@@ -1,30 +1,59 @@
-// MITASK ZE
-/**  type scriptda Shunday function yozing, uni string parametri bolsin. 
- * String ichidagi har bir sozni bosh harflarini katta harf qilib qaytarsin
- *  lekin 1 yoki 2 harfdan iborat sozlarni esa oz holicha qoldirsin.
-MASALAN: capitalizeWords('name should be a string') return 'Name Should be a String'
-**/
-
-function capitalizeWords(sentence: string) {
-  // Funksiyaga kelgan gapni bo'sh joylarga ajratib olish
+// MITASK ZG
+/**type Scriptda Shunday function yozing, u berilgan string parametrni 
+ * snake casega otkazib qaytarsin. 
+MASALAN: modifyWords('name should be a string') return 'name_should_be_a_string' */
+function modifyWords(sentence: string) {
+  // Bo'sh joylar orqali so'zlar ro'yxatiga ajratamiz
   let words = sentence.split(" ");
 
-  // Har bir sozni bosh harfini katta qilib qaytaramiz
-  for (let i = 0; i < words.length; i++) {
-    // Agar soz 1 yoki 2 harfdan iborat bo'lsa, unga hech nima qilmaymiz
-    if (words[i].length <= 2) {
-      continue;
-    }
-    // Aks holda, bosh harfini katta qilib qaytarib olamiz
-    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
-  }
+  // So'zlar ro'yxatidan qo'llanish bilan yangi string yaratamiz
+  let modifiedString = words.join("_");
 
-  // Tuzilgan so'zlar ro'yxatini bo'sh bo'shliqlar bilan biriktiramiz
-  return words.join(" ");
+  // Hamma harflarni kichik qilib olib, kichik harf ko'rinishiga o'tkazamiz
+  modifiedString = modifiedString.toLowerCase();
+
+  return modifiedString;
 }
 
 // Funksiyani tekshirish
-console.log(capitalizeWords("name should be a string")); // Natija: 'Name Should be a String'
+console.log(modifyWords("name should be a string")); // Natija: 'name_should_be_a_string'
+
+/**Bu funksiya quyidagi qadamni o'z ichiga oladi:
+
+Berilgan gapni so'zlarga ajratadi.
+So'zlar ro'yxatidan qo'llanib, so'zlarni "_ga" ajratgan yangi string yaratiladi.
+Yangi stringdagi hamma harflar kichik harflarga o'tkaziladi. */
+//======
+
+//===============//
+
+// // MITASK ZF
+// /**  type scriptda Shunday function yozing, uni string parametri bolsin.
+//  * String ichidagi har bir sozni bosh harflarini katta harf qilib qaytarsin
+//  *  lekin 1 yoki 2 harfdan iborat sozlarni esa oz holicha qoldirsin.
+// MASALAN: capitalizeWords('name should be a string') return 'Name Should be a String'
+// **/
+
+// function capitalizeWords(sentence: string) {
+//   // Funksiyaga kelgan gapni bo'sh joylarga ajratib olish
+//   let words = sentence.split(" ");
+
+//   // Har bir sozni bosh harfini katta qilib qaytaramiz
+//   for (let i = 0; i < words.length; i++) {
+//     // Agar soz 1 yoki 2 harfdan iborat bo'lsa, unga hech nima qilmaymiz
+//     if (words[i].length <= 2) {
+//       continue;
+//     }
+//     // Aks holda, bosh harfini katta qilib qaytarib olamiz
+//     words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+//   }
+
+//   // Tuzilgan so'zlar ro'yxatini bo'sh bo'shliqlar bilan biriktiramiz
+//   return words.join(" ");
+// }
+
+// // Funksiyani tekshirish
+// console.log(capitalizeWords("name should be a string")); // Natija: 'Name Should be a String'
 
 //=======
 //========================//
