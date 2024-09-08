@@ -74,6 +74,10 @@ class MemberService {
       member.memberPassword
     );
 
+    if (!isMatch) {
+      throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
+    }
+
     return await this.memberModel.findById(member._id).lean().exec(); //togridan togri return qilish
   }
 
