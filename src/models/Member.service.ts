@@ -9,7 +9,6 @@ import Errors, { HttpCode, Message } from "../libs/Errors";
 import { MemberStatus, MemberType } from "../libs/enums/member.enum";
 import * as bcrypt from "bcryptjs";
 import { shapeIntoMongooseObjectId } from "../libs/config";
-import { Types } from "mongoose";
 
 class MemberService {
   private readonly memberModel;
@@ -19,7 +18,7 @@ class MemberService {
 
   /** SPA */
 
-  public async getRestaurant(): Promise<Member | any> {
+  public async getRestaurant(): Promise<Member> {
     const result = await this.memberModel
       .findOne({ memberType: MemberType.RESTAURANT })
       .lean()
@@ -29,7 +28,7 @@ class MemberService {
     return result;
   }
 
-  public async signup(input: MemberInput): Promise<Member | any> {
+  public async signup(input: MemberInput): Promise<Member> {
     const salt = await bcrypt.genSalt();
     input.memberPassword = await bcrypt.hash(input.memberPassword, salt);
 
@@ -43,7 +42,7 @@ class MemberService {
     }
   }
 
-  public async login(input: LoginInput): Promise<Member | any> {
+  public async login(input: LoginInput): Promise<Member> {
     const member = await this.memberModel
       .findOne(
         {
@@ -57,18 +56,6 @@ class MemberService {
     else if (member.memberStatus === MemberStatus.BLOCK)
       throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER);
 
-    // const isMatch = await bcrypt.compare(
-    //   input.memberPassword,
-    //   member.memberPassword
-    // );
-
-    // if (!isMatch) {
-    //   throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
-    // }
-    if (!member.memberPassword) {
-      throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
-    }
-
     const isMatch = await bcrypt.compare(
       input.memberPassword,
       member.memberPassword
@@ -81,7 +68,7 @@ class MemberService {
     return await this.memberModel.findById(member._id).lean().exec(); //togridan togri return qilish
   }
 
-  public async getMemberDetail(member: Member): Promise<Member | any> {
+  public async getMemberDetail(member: Member): Promise<Member> {
     const memberId = shapeIntoMongooseObjectId(member._id);
     const result = await this.memberModel
       .findOne({ _id: memberId, memberStatus: MemberStatus.ACTIVE })
@@ -94,7 +81,7 @@ class MemberService {
   public async updateMember(
     member: Member,
     input: MemberUpdateInput
-  ): Promise<Member | any> {
+  ): Promise<Member> {
     const memberId = shapeIntoMongooseObjectId(member._id);
     const result = await this.memberModel
       .findOneAndUpdate({ _id: memberId }, input, { new: true })
@@ -104,7 +91,7 @@ class MemberService {
     return result;
   }
 
-  public async getTopUsers(): Promise<Member[] | any> {
+  public async getTopUsers(): Promise<Member[]> {
     const result = await this.memberModel
       .find({
         memberStatus: MemberStatus.ACTIVE,
@@ -118,10 +105,7 @@ class MemberService {
     return result;
   }
 
-  public async addUserPoint(
-    member: Member,
-    point: number
-  ): Promise<Member | any> {
+  public async addUserPoint(member: Member, point: number): Promise<Member> {
     const memberId = shapeIntoMongooseObjectId(member._id);
 
     return await this.memberModel
@@ -139,7 +123,7 @@ class MemberService {
 
   /** SSR */
 
-  public async processSignup(input: MemberInput): Promise<Member | any> {
+  public async processSignup(input: MemberInput): Promise<Member> {
     const exist = await this.memberModel
       .findOne({ memberType: MemberType.RESTAURANT })
       .exec();
@@ -159,7 +143,7 @@ class MemberService {
     }
   }
 
-  public async processlogin(input: LoginInput): Promise<Member | any> {
+  public async processlogin(input: LoginInput): Promise<Member> {
     const member = await this.memberModel
       .findOne(
         { memberNick: input.memberNick },
@@ -168,14 +152,16 @@ class MemberService {
       .exec();
     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
 
-    if (!member.memberPassword) {
-      throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
-    }
-
     const isMatch = await bcrypt.compare(
       input.memberPassword,
       member.memberPassword
     );
+    //const isMatch = input.memberPassword === member.memberPassword;
+    //console.log("isMatch:", isMatch);
+
+    if (!isMatch) {
+      throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
+    }
 
     //   const result = await this.memberModel.findById(member._id).exec();
     //   console.log("member:", result);
@@ -183,7 +169,7 @@ class MemberService {
     return await this.memberModel.findById(member._id).exec(); //togridan togri return qilish
   }
 
-  public async getUsers(): Promise<Member[] | any> {
+  public async getUsers(): Promise<Member[]> {
     const result = await this.memberModel
       .find({ memberType: MemberType.USER })
       .exec();
@@ -191,10 +177,7 @@ class MemberService {
 
     return result;
   }
-
-  public async updateChosenUser(
-    input: MemberUpdateInput
-  ): Promise<Member | any> {
+  public async updateChosenUser(input: MemberUpdateInput): Promise<Member> {
     input._id = shapeIntoMongooseObjectId(input._id);
     const result = await this.memberModel
       .findByIdAndUpdate({ _id: input._id }, input, { new: true })

@@ -26,13 +26,13 @@ const memberSchema = new Schema(
     memberPhone: {
       type: String,
       index: { unique: true, sparse: true },
-      require: true,
+      required: true,
     },
 
     memberPassword: {
       type: String,
       select: false,
-      requires: true,
+      required: true,
     },
 
     memberAddress: {
