@@ -35,7 +35,7 @@ class OrderService {
     const delivery = amount < 100 ? 5 : 0;
 
     try {
-      const newOrder: Order = await this.orderModel.create({
+      const newOrder: any = await this.orderModel.create({
         orderTotal: amount + delivery,
         orderDelivery: delivery,
         memberId: memberId,
@@ -106,7 +106,7 @@ class OrderService {
   public async updateOrder(
     member: Member,
     input: OrderUpdateInput
-  ): Promise<Order> {
+  ): Promise<Order | any> {
     const memberId = shapeIntoMongooseObjectId(member._id),
       orderId = shapeIntoMongooseObjectId(input.orderId),
       orderStatus = input.orderStatus;

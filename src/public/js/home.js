@@ -1,98 +1,106 @@
-console.log("Home frontend javascript file");
+const staggerVisualizerEl = document.querySelector(".stagger-visualizer");
+const fragment = document.createDocumentFragment();
+const numberOfElements = 81;
 
-function fitElementToParent(el, padding) {
-  let timeout = null;
-
-  function resize() {
-    if (timeout) clearTimeout(timeout);
-    anime.set(el, { scale: 1 });
-    let pad = padding || 0;
-    let parentEl = el.parentNode;
-    let elOffsetWidth = el.offsetWidth - pad;
-    let parentOffsetWidth = parentEl.offsetWidth;
-    let ratio = parentOffsetWidth / elOffsetWidth;
-    timeout = setTimeout(anime.set(el, { scale: ratio }), 10);
-  }
-
-  resize();
-  window.addEventListener("resize", resize);
+for (let i = 0; i < numberOfElements; i++) {
+  fragment.appendChild(document.createElement("div"));
 }
 
-(function () {
-  const sphereEl = document.querySelector(".sphere-animation");
-  const spherePathEls = sphereEl.querySelectorAll(".sphere path");
-  const pathLength = spherePathEls.length;
-  const animations = [];
+staggerVisualizerEl.appendChild(fragment);
 
-  fitElementToParent(sphereEl);
-
-  const breathAnimation = anime({
-    begin: function () {
-      for (let i = 0; i < pathLength; i++) {
-        animations.push(
-          anime({
-            targets: spherePathEls[i],
-            stroke: {
-              value: ["rgba(255,75,75,1)", "rgba(80,80,80,.35)"],
-              duration: 500,
-            },
-            translateX: [2, -4],
-            translateY: [2, -4],
-            easing: "easeOutQuad",
-            autoplay: false,
-          })
-        );
-      }
-    },
-    update: function (ins) {
-      animations.forEach(function (animation, i) {
-        let percent = (1 - Math.sin(i * 0.35 + 0.0022 * ins.currentTime)) / 2;
-        animation.seek(animation.duration * percent);
-      });
-    },
-    duration: Infinity,
+const staggersAnimation = anime
+  .timeline({
+    targets: ".stagger-visualizer div",
+    easing: "easeInOutSine",
+    delay: anime.stagger(50),
+    loop: true,
     autoplay: false,
+    duration: 600,
+    loopComplete: (a) => console.log("end"),
+    //update: () => console.log(staggersAnimation.progress)
+  })
+  .add({
+    scale: anime.stagger([2.5, 1], { from: "center", grid: [9, 9] }),
+    translateX: anime.stagger([-100, 100]),
+    rotate: anime.stagger([-45, 45]),
+    easing: "easeInOutCirc",
+    delay: anime.stagger(10, { from: "center" }),
+  })
+  .add({
+    scale: anime.stagger([2.5, 1], { from: "center", easing: "easeInOutCirc" }),
+    translateX: anime.stagger([-200, 200]),
+    translateY: anime.stagger([-200, 200]),
+    rotate: 0,
+    delay: anime.stagger(1, { from: "last" }),
+  })
+  .add({
+    rotate: anime.stagger(2, {
+      from: "center",
+      direction: "reverse",
+      easing: "easeInSine",
+    }),
+    translateX: 0,
+    translateY: 0,
+    delay: anime.stagger(10, { from: "center" }),
+  })
+  .add({
+    scale: anime.stagger([2, 1], { grid: [9, 9], axis: "y" }),
+    translateY: anime.stagger([-100, 200], { grid: [9, 9], axis: "y" }),
+    rotate: 0,
+    delay: anime.stagger(1, { from: "last" }),
+  })
+  .add({
+    translateX: () => anime.random(-100, 100),
+    translateY: () => anime.random(-100, 100),
+    scale: anime.stagger([1.5, 0.5], { from: "center" }),
+    rotate: anime.stagger([10, -10], { from: "last" }),
+    delay: anime.stagger(50, { from: "center", grid: [9, 9] }),
+  })
+  .add({
+    translateX: () => anime.random(-100, 100),
+    translateY: () => anime.random(-100, 100),
+    rotate: anime.stagger([-10, 10], { from: "last" }),
+    scale: 1,
+    delay: anime.stagger(50, { from: "center", grid: [9, 9] }),
+  })
+  .add({
+    translateX: 0,
+    translateY: anime.stagger(6, { from: "center", direction: "reverse" }),
+    rotate: 0,
+    delay: anime.stagger(50, { from: "center", grid: [9, 9] }),
+  })
+  .add({
+    translateX: anime.stagger("1rem", {
+      grid: [9, 9],
+      from: "center",
+      axis: "x",
+    }),
+    //translateY: anime.stagger('1rem', {grid: [9, 9], from: 'center', axis: 'y'}),
+    delay: anime.stagger(200, {
+      grid: [9, 9],
+      from: "center",
+      direction: "reverse",
+    }),
+  })
+  .add({
+    translateX: anime.stagger([25, -25], { from: "first" }),
+    translateY: 0,
+    rotate: anime.stagger([40, -40], { from: "first" }),
+    delay: anime.stagger(10, { from: "first" }),
+  })
+  .add({
+    translateY: anime.stagger([-240, 240]),
+    rotate: () => anime.random(-100, 100),
+    scale: anime.stagger([1, 3], { from: "center" }),
+    delay: anime.stagger(10, { from: 0 }),
+  })
+  .add({
+    translateX: 0,
+    translateY: 0,
+    scale: 1,
+    rotate: 360,
+    duration: 2000,
+    delay: 0,
   });
 
-  const introAnimation = anime
-    .timeline({
-      autoplay: false,
-    })
-    .add(
-      {
-        targets: spherePathEls,
-        strokeDashoffset: {
-          value: [anime.setDashoffset, 0],
-          duration: 3900,
-          easing: "easeInOutCirc",
-          delay: anime.stagger(190, { direction: "reverse" }),
-        },
-        duration: 2000,
-        delay: anime.stagger(60, { direction: "reverse" }),
-        easing: "linear",
-      },
-      0
-    );
-
-  const shadowAnimation = anime(
-    {
-      targets: "#sphereGradient",
-      x1: "25%",
-      x2: "25%",
-      y1: "0%",
-      y2: "75%",
-      duration: 30000,
-      easing: "easeOutQuint",
-      autoplay: false,
-    },
-    0
-  );
-
-  function init() {
-    introAnimation.play();
-    breathAnimation.play();
-    shadowAnimation.play();
-  }
-
-  init();
-})();
+staggersAnimation.play();

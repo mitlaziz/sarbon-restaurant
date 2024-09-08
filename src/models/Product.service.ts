@@ -55,7 +55,7 @@ class ProductService {
   public async getProduct(
     memberId: ObjectId | null,
     id: string
-  ): Promise<void> {
+  ): Promise<void | any> {
     const productId = shapeIntoMongooseObjectId(id);
 
     let result = await this.productModel
@@ -95,14 +95,14 @@ class ProductService {
   }
 
   /** SSR */
-  public async getAllProducts(): Promise<Product[]> {
+  public async getAllProducts(): Promise<Product[] | any> {
     const result = await this.productModel.find().exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
     return result;
   }
 
-  public async createNewProduct(input: ProductInput): Promise<Product> {
+  public async createNewProduct(input: ProductInput): Promise<Product | any> {
     try {
       return await this.productModel.create(input);
     } catch (err) {
@@ -114,7 +114,7 @@ class ProductService {
   public async updateChosenProduct(
     id: string,
     input: ProductUpdateInput
-  ): Promise<Product> {
+  ): Promise<Product | any> {
     //sstring => object
     id = shapeIntoMongooseObjectId(id);
     const result = await this.productModel
