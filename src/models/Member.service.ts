@@ -18,7 +18,7 @@ class MemberService {
 
   /** SPA */
 
-  public async getRestaurant(): Promise<Member> {
+  public async getRestaurant(): Promise<Member | any> {
     const result = await this.memberModel
       .findOne({ memberType: MemberType.RESTAURANT })
       .lean()
@@ -28,7 +28,7 @@ class MemberService {
     return result;
   }
 
-  public async signup(input: MemberInput): Promise<Member> {
+  public async signup(input: MemberInput): Promise<Member | any> {
     const salt = await bcrypt.genSalt();
     input.memberPassword = await bcrypt.hash(input.memberPassword, salt);
 
@@ -42,7 +42,7 @@ class MemberService {
     }
   }
 
-  public async login(input: LoginInput): Promise<Member> {
+  public async login(input: LoginInput): Promise<Member | any> {
     const member = await this.memberModel
       .findOne(
         {
@@ -68,7 +68,7 @@ class MemberService {
     return await this.memberModel.findById(member._id).lean().exec(); //togridan togri return qilish
   }
 
-  public async getMemberDetail(member: Member): Promise<Member> {
+  public async getMemberDetail(member: Member): Promise<Member | any> {
     const memberId = shapeIntoMongooseObjectId(member._id);
     const result = await this.memberModel
       .findOne({ _id: memberId, memberStatus: MemberStatus.ACTIVE })
@@ -81,7 +81,7 @@ class MemberService {
   public async updateMember(
     member: Member,
     input: MemberUpdateInput
-  ): Promise<Member> {
+  ): Promise<Member | any> {
     const memberId = shapeIntoMongooseObjectId(member._id);
     const result = await this.memberModel
       .findOneAndUpdate({ _id: memberId }, input, { new: true })
@@ -91,7 +91,7 @@ class MemberService {
     return result;
   }
 
-  public async getTopUsers(): Promise<Member[]> {
+  public async getTopUsers(): Promise<Member[] | any> {
     const result = await this.memberModel
       .find({
         memberStatus: MemberStatus.ACTIVE,
@@ -105,7 +105,10 @@ class MemberService {
     return result;
   }
 
-  public async addUserPoint(member: Member, point: number): Promise<Member> {
+  public async addUserPoint(
+    member: Member,
+    point: number
+  ): Promise<Member | any> {
     const memberId = shapeIntoMongooseObjectId(member._id);
 
     return await this.memberModel
@@ -123,7 +126,7 @@ class MemberService {
 
   /** SSR */
 
-  public async processSignup(input: MemberInput): Promise<Member> {
+  public async processSignup(input: MemberInput): Promise<Member | any> {
     const exist = await this.memberModel
       .findOne({ memberType: MemberType.RESTAURANT })
       .exec();
@@ -143,7 +146,7 @@ class MemberService {
     }
   }
 
-  public async processlogin(input: LoginInput): Promise<Member> {
+  public async processlogin(input: LoginInput): Promise<Member | any> {
     const member = await this.memberModel
       .findOne(
         { memberNick: input.memberNick },
@@ -169,7 +172,7 @@ class MemberService {
     return await this.memberModel.findById(member._id).exec(); //togridan togri return qilish
   }
 
-  public async getUsers(): Promise<Member[]> {
+  public async getUsers(): Promise<Member[] | any> {
     const result = await this.memberModel
       .find({ memberType: MemberType.USER })
       .exec();
@@ -177,7 +180,9 @@ class MemberService {
 
     return result;
   }
-  public async updateChosenUser(input: MemberUpdateInput): Promise<Member> {
+  public async updateChosenUser(
+    input: MemberUpdateInput
+  ): Promise<Member | any> {
     input._id = shapeIntoMongooseObjectId(input._id);
     const result = await this.memberModel
       .findByIdAndUpdate({ _id: input._id }, input, { new: true })
