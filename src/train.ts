@@ -1,22 +1,70 @@
-// MITASK ZG
-/**type Scriptda Shunday function yozing, u berilgan string parametrni 
- * snake casega otkazib qaytarsin. 
-MASALAN: modifyWords('name should be a string') return 'name_should_be_a_string' */
-function modifyWords(sentence: string) {
-  // Bo'sh joylar orqali so'zlar ro'yxatiga ajratamiz
-  let words = sentence.split(" ");
+//
+/* 
+- Project Standards:
+  - Naming standards:
+    function, method, variable => CAMEL
+    class => PASCAL
+    folder, file => KEBAB
+    css => SNAKE
+  - Error handling
+*/
 
-  // So'zlar ro'yxatidan qo'llanish bilan yangi string yaratamiz
-  let modifiedString = words.join("_");
+/* Request:
+  Traditinal Api
+  Rest Api
+  GraphQL Api
+  ...
+*/
 
-  // Hamma harflarni kichik qilib olib, kichik harf ko'rinishiga o'tkazamiz
-  modifiedString = modifiedString.toLowerCase();
+/* Frontend Development:
+  Traditional FD   => SSR   => EJS
+  Modern FD        => SPA   => REACT
+*/
 
-  return modifiedString;
-}
+/* Cookies:
+  request join
+  self destroy
+*/
 
-// Funksiyani tekshirish
-console.log(modifyWords("name should be a string")); // Natija: 'name_should_be_a_string'
+/* Validation:
+  Frontend validation
+  Backend validation
+  Database validation
+*/
+
+/* PM2 COMMANDS:
+  pm2 ls
+  pm2 start dist/server.js --name=SARBON
+  pm2 start "npm run start:prod" --name=SARBON
+  pm2 stop id   (exm: pm2 stop 1)
+  pm2 delete id   (exm: pm2 delete 1)
+  pm2 restart id   (exm: pm2 restart 1)
+  pm2 monit 
+  pm2 kill  -  pm2dagi loyihalarni hammasini o'chirib tashlaydi
+*/
+//
+
+//==========//
+
+// // MITASK ZG
+// /**type Scriptda Shunday function yozing, u berilgan string parametrni
+//  * snake casega otkazib qaytarsin.
+// MASALAN: modifyWords('name should be a string') return 'name_should_be_a_string' */
+// function modifyWords(sentence: string) {
+//   // Bo'sh joylar orqali so'zlar ro'yxatiga ajratamiz
+//   let words = sentence.split(" ");
+
+//   // So'zlar ro'yxatidan qo'llanish bilan yangi string yaratamiz
+//   let modifiedString = words.join("_");
+
+//   // Hamma harflarni kichik qilib olib, kichik harf ko'rinishiga o'tkazamiz
+//   modifiedString = modifiedString.toLowerCase();
+
+//   return modifiedString;
+// }
+
+// // Funksiyani tekshirish
+// console.log(modifyWords("name should be a string")); // Natija: 'name_should_be_a_string'
 
 /**Bu funksiya quyidagi qadamni o'z ichiga oladi:
 

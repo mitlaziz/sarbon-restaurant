@@ -11,10 +11,33 @@ import { T } from "./libs/types/common";
 import cors from "cors";
 import { Server as SocketIOServer } from "socket.io";
 import http from "http";
+import mongoose from "mongoose";
+// const MongoDBStore = ConnectMongoDB(session);
+// const store = new MongoDBStore({
+//   uri: String(process.env.MONGO_URL),
+//   collection: "sessions",
+// });
+
+// `connect-mongodb-session` funksiyasini chaqiramiz
 const MongoDBStore = ConnectMongoDB(session);
+
+// strictQuery o'rnatiladi
+mongoose.set("strictQuery", true); // yoki false, qaysi birini ishlatmoqchi bo'lsangiz
+
+// MongoDB sessiya store ini yaratish
 const store = new MongoDBStore({
   uri: String(process.env.MONGO_URL),
   collection: "sessions",
+});
+
+// Store ulanishini kuzatish
+store.on("connected", () => {
+  console.log("MongoDB session store connected");
+});
+
+// Ulanish xatolarini kuzatish
+store.on("error", (error: Error) => {
+  console.error("MongoDB session store connection error:", error);
 });
 
 // 1-ENTRANCE
